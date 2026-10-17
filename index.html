@@ -163,7 +163,7 @@ details.texto[open] summary{margin-bottom:10px}
     var html = '<p class="eyebrow">Myrela · Vestibulinho Etec</p>'
       + '<h1>Questão do dia</h1>'
       + '<p class="sub">'+esc(S.titulo)+' · '+dm(S.dias[0].data)+' a '+dm(S.dias[S.dias.length-1].data)+'</p>'
-      + '<div class="faixa'+(pend.length?' on':'')+'">Você tem respostas guardadas que ainda não foram enviadas para a Lucia: '+pend.map(function(d){return d.nome}).join(", ")+'.</div>'
+      + '<div class="faixa'+(pend.length?' on':'')+'">Você tem respostas guardadas que ainda não foram enviadas para o professor: '+pend.map(function(d){return d.nome}).join(", ")+'.</div>'
       + '<div class="instalar'+(deferredInstall?' on':'')+'" id="inst"><button class="btn sec" id="btnInst">Instalar o app no celular</button></div>'
       + '<div class="prog"><span class="num">'+feitas+'</span><span class="de">de '+total+' questões respondidas</span></div>'
       + '<div class="bars" aria-hidden="true">'+bars+'</div><div class="legend" aria-hidden="true">'+leg+'</div>'
@@ -189,7 +189,7 @@ details.texto[open] summary{margin-bottom:10px}
     var enviado=!!st.env[dia.sig], vistos={}, html='<button class="voltar" id="voltar">← Semana</button>'
       + '<p class="eyebrow">'+dia.nome+' · '+dm(dia.data)+'</p>'
       + '<h2>'+(dia.q.length===1?'Questão do dia':dia.q.length+' questões')+'</h2>'
-      + '<p class="sub">'+(enviado?'Enviada para a Lucia. As respostas estão travadas.':'Escolha uma alternativa em cada questão.')+'</p>';
+      + '<p class="sub">'+(enviado?'Enviada para o professor. As respostas estão travadas.':'Escolha uma alternativa em cada questão.')+'</p>';
     dia.q.forEach(function(n,i){
       var q=S.questoes[n], tx="";
       if(q.texto){
@@ -213,7 +213,7 @@ details.texto[open] summary{margin-bottom:10px}
     var r=respondidas(dia), tot=dia.q.length;
     html += '<div class="barra"><div class="in">'
       + '<p class="aviso" id="aviso">'+(enviado?'Enviada em '+new Date(st.env[dia.sig]).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):(r<tot?'Faltam '+(tot-r)+' de '+tot:'Tudo respondido. Agora é só enviar.'))+'</p>'
-      + '<button class="btn" id="enviar"'+(r<tot?' disabled':'')+'>'+(enviado?'Enviar de novo':'Enviar para a Lucia')+'</button>'
+      + '<button class="btn" id="enviar"'+(r<tot?' disabled':'')+'>'+(enviado?'Enviar de novo':'Enviar para o professor')+'</button>'
       + '</div></div>';
     APP.innerHTML=html;
     document.getElementById("voltar").onclick=function(){ location.hash="" };
@@ -245,7 +245,7 @@ details.texto[open] summary{margin-bottom:10px}
     st.env[dia.sig]=Date.now(); save(st);
     window.open(url,"_blank") || (location.href=url);
     diaView(dia.sig);
-    toast("Abrindo o WhatsApp. Escolha a Lucia e toque em enviar.");
+    toast("Abrindo o WhatsApp. Escolha o professor e toque em enviar.");
   }
 
   function instalar(){
@@ -254,7 +254,7 @@ details.texto[open] summary{margin-bottom:10px}
     deferredInstall.userChoice.finally(function(){ deferredInstall=null; var e=document.getElementById("inst"); if(e) e.classList.remove("on") });
   }
   window.addEventListener("beforeinstallprompt",function(e){ e.preventDefault(); deferredInstall=e; var el=document.getElementById("inst"); if(el) el.classList.add("on") });
-  window.addEventListener("online",function(){ if(pendentesEnvio().length) toast("A internet voltou. Você tem respostas para enviar à Lucia.") });
+  window.addEventListener("online",function(){ if(pendentesEnvio().length) toast("A internet voltou. Você tem respostas para enviar ao professor.") });
 
   function rota(){ var h=location.hash.slice(1); if(h) diaView(h); else home() }
   window.addEventListener("hashchange",rota);
