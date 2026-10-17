@@ -136,7 +136,7 @@ details.texto[open] summary{margin-bottom:10px}
   var LETRAS = ["A","B","C","D","E"];
 
   function respondidas(dia){ return dia.q.filter(function(n){ return st.r[n] }).length }
-  function liberado(dia){ return PREVIEW || dia.data <= HOJE }
+  function liberado(dia){ return true } // todos os dias abertos (pedido da Lucia, 17/10)
   function status(dia){
     var tot=dia.q.length, r=respondidas(dia);
     if(st.env[dia.sig]) return {c:"ok", t:"Enviada"};
