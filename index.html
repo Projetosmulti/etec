@@ -59,7 +59,11 @@ h2{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.15;marg
 .chip.atr{background:var(--accent-soft);color:var(--accent)}
 
 /* tela do dia */
-.voltar{background:none;border:0;padding:8px 0;color:var(--ink-2);cursor:pointer;font-size:15px}
+.topo{position:sticky;top:0;z-index:5;background:var(--bg);margin:-28px -20px 12px;padding:calc(10px + env(safe-area-inset-top)) 20px 10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.voltar{background:none;border:1px solid var(--line);border-radius:999px;padding:10px 16px;color:var(--ink);cursor:pointer;font-size:15px;font-weight:600;min-height:44px}
+.navdias{display:flex;gap:6px}
+.navdias button{background:none;border:1px solid var(--line);border-radius:999px;width:44px;height:44px;color:var(--ink);cursor:pointer;font-size:16px}
+.navdias button:disabled{opacity:.3;cursor:default}
 .q{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-top:20px}
 .qhead{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:4px}
 .qhead .n{font-family:var(--serif);font-size:22px}
@@ -180,7 +184,7 @@ details.texto[open] summary{margin-bottom:10px}
     });
     html += '</ul><p class="rod">Questões oficiais do Vestibulinho Etec. Suas respostas ficam guardadas no celular, mesmo sem internet.</p>';
     APP.innerHTML = html;
-    APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ location.hash=b.dataset.dia } });
+    APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ veioDaLista=true; location.hash=b.dataset.dia } });
     var bi=document.getElementById("btnInst"); if(bi) bi.onclick=instalar;
     var lp=document.getElementById("limpar"); if(lp) lp.onclick=function(){ st={r:{},env:{}}; save(st); home(); toast("Respostas de teste apagadas.") };
     window.scrollTo(0,0);
@@ -189,7 +193,7 @@ details.texto[open] summary{margin-bottom:10px}
   function diaView(sig){
     var dia=S.dias.filter(function(d){return d.sig===sig})[0];
     if(!dia || !liberado(dia)){ location.hash=""; return }
-    var enviado=!!st.env[dia.sig], vistos={}, html='<button class="voltar" id="voltar">← Semana</button>'
+    var enviado=!!st.env[dia.sig], vistos={}, idx=S.dias.indexOf(dia), html='<div class="topo"><button class="voltar" id="voltar">← Todos os dias</button><span class="navdias"><button id="ant" aria-label="Dia anterior"'+(idx===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próximo dia"'+(idx===S.dias.length-1?' disabled':'')+'>›</button></span></div>'
       + '<p class="eyebrow">'+dia.nome+' · '+dm(dia.data)+'</p>'
       + '<h2>'+(dia.q.length===1?'Questão do dia':dia.q.length+' questões')+'</h2>'
       + '<p class="sub">'+(enviado?'Enviada para o professor. As respostas estão travadas.':'Escolha uma alternativa em cada questão.')+'</p>';
@@ -219,7 +223,9 @@ details.texto[open] summary{margin-bottom:10px}
       + '<button class="btn" id="enviar"'+(r<tot?' disabled':'')+'>'+(enviado?'Enviar de novo':'Enviar para o professor')+'</button>'
       + '</div></div>';
     APP.innerHTML=html;
-    document.getElementById("voltar").onclick=function(){ location.hash="" };
+    document.getElementById("voltar").onclick=voltar;
+    document.getElementById("ant").onclick=function(){ if(idx>0) location.replace("#"+S.dias[idx-1].sig) };
+    document.getElementById("prox").onclick=function(){ if(idx<S.dias.length-1) location.replace("#"+S.dias[idx+1].sig) };
     APP.querySelectorAll(".alt").forEach(function(b){
       b.onclick=function(){
         var n=b.dataset.q; st.r[n]=b.dataset.l; save(st);
@@ -260,6 +266,9 @@ details.texto[open] summary{margin-bottom:10px}
   window.addEventListener("beforeinstallprompt",function(e){ e.preventDefault(); deferredInstall=e; var el=document.getElementById("inst"); if(el) el.classList.add("on") });
   window.addEventListener("online",function(){ if(pendentesEnvio().length) toast("A internet voltou. Você tem respostas para enviar ao professor.") });
 
+  // Voltar: usa o histórico quando a aluna veio da lista (o botão voltar do Android faz o mesmo).
+  var veioDaLista=false;
+  function voltar(){ if(veioDaLista){ veioDaLista=false; history.back() } else location.replace("#") }
   function rota(){ var h=location.hash.slice(1); if(h) diaView(h); else home() }
   window.addEventListener("hashchange",rota);
   rota();
