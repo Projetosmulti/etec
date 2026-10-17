@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Questão do Dia</title>
+<meta name="description" content="Questões do Vestibulinho Etec para a Myrela, uma por dia.">
+<meta name="theme-color" content="#F5F2EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+:root{
+  --bg:#F5F2EC; --paper:#FFFFFF; --ink:#1B1A18; --ink-2:#5E5A53; --ink-3:#9A958C;
+  --line:#E4DFD5; --accent:#A4492B; --accent-soft:#F3E4DC; --ok:#2F6B4F; --ok-soft:#E1EEE6;
+  --warn:#9A6A12; --warn-soft:#F5EBD3;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#161513; --paper:#201F1C; --ink:#EEEAE2; --ink-2:#B3ADA2; --ink-3:#7C776E;
+  --line:#34322D; --accent:#E08A67; --accent-soft:#3A2820; --ok:#7FC3A0; --ok-soft:#1F3229;
+  --warn:#E3B45A; --warn-soft:#3A2F17;
+}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 120px}
+button{font:inherit;color:inherit}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0}
+h1{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1.05;letter-spacing:-.01em;margin:8px 0 6px}
+h2{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.15;margin:6px 0 4px}
+.sub{color:var(--ink-2);margin:0}
+.rule{height:1px;background:var(--line);margin:24px 0}
+
+/* progresso */
+.prog{display:flex;align-items:baseline;gap:12px;margin:28px 0 10px}
+.prog .num{font-family:var(--serif);font-size:44px;line-height:1}
+.prog .de{color:var(--ink-2)}
+.bars{display:grid;grid-template-columns:1fr 1fr 5fr 1fr 1fr 5fr;gap:4px;height:8px}
+.bars span{border-radius:2px;background:var(--line);overflow:hidden;position:relative}
+.bars span i{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+.legend{display:grid;grid-template-columns:1fr 1fr 5fr 1fr 1fr 5fr;gap:4px;font-size:10px;letter-spacing:.08em;color:var(--ink-3);margin-top:6px}
+
+/* lista de dias */
+.dias{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
+.dia{display:flex;align-items:center;gap:16px;width:100%;padding:18px 2px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer}
+.dia[disabled]{cursor:default;opacity:.5}
+.dia .d{font-family:var(--serif);font-size:30px;line-height:1;width:44px}
+.dia .info{flex:1;min-width:0}
+.dia .nome{font-weight:600}
+.dia .meta{font-size:14px;color:var(--ink-2)}
+.chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap;background:var(--line);color:var(--ink-2)}
+.chip.hoje{background:var(--ink);color:var(--bg)}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}
+.chip.pend{background:var(--warn-soft);color:var(--warn)}
+.chip.atr{background:var(--accent-soft);color:var(--accent)}
+
+/* tela do dia */
+.voltar{background:none;border:0;padding:8px 0;color:var(--ink-2);cursor:pointer;font-size:15px}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-top:20px}
+.qhead{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:4px}
+.qhead .n{font-family:var(--serif);font-size:22px}
+.qhead .area{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.fonte{font-size:13px;color:var(--ink-3);margin:0 0 14px}
+.texto{border-left:2px solid var(--line);padding:2px 0 2px 14px;margin:12px 0 16px;color:var(--ink);font-size:15.5px}
+.texto p{margin:0 0 10px}
+.texto figure{margin:10px 0}
+.texto img{width:100%;height:auto;border-radius:8px;background:#fff}
+details.texto summary{cursor:pointer;color:var(--ink-2);font-size:14px;list-style:none}
+details.texto summary::before{content:"+ "}
+details.texto[open] summary::before{content:"− "}
+details.texto[open] summary{margin-bottom:10px}
+.titulo-texto{font-family:var(--serif);font-size:18px}
+.poema{font-family:var(--serif);font-size:17px;line-height:1.6}
+.nota{font-size:13px;color:var(--ink-2)}
+.mk{display:inline-block;font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:0 5px;margin:0 1px;vertical-align:1px}
+.lac{display:inline-block;min-width:56px;border-bottom:1.5px solid var(--ink);text-align:center;font-size:13px;color:var(--accent)}
+.formula{font-family:var(--serif);font-size:20px;text-align:center;margin:12px 0}
+.enun p{margin:0 0 10px}
+.enun ul,.texto ul{margin:0 0 10px;padding-left:20px}
+.tab{border-collapse:collapse;margin:8px auto 14px;font-variant-numeric:tabular-nums}
+.tab th,.tab td{padding:6px 18px;border-bottom:1px solid var(--line);text-align:center}
+.tab th{font-size:13px;color:var(--ink-2);font-weight:600}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.85em;line-height:1.1;margin:0 2px}
+.frac span:first-child{border-bottom:1px solid currentColor;padding:0 2px}
+.obs{font-size:13px;color:var(--ink-3);font-style:italic}
+
+.alts{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.alt{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:transparent;border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;min-height:48px}
+.alt .l{flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--ink-3);display:grid;place-items:center;font-weight:600;font-size:14px}
+.alt .t{padding-top:2px}
+.alt[aria-pressed="true"]{border-color:var(--ink);background:var(--bg)}
+.alt[aria-pressed="true"] .l{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.alt:disabled{cursor:default}
+.alt:focus-visible,.dia:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.barra{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px 20px calc(16px + env(safe-area-inset-bottom))}
+.barra .in{max-width:640px;margin:0 auto}
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:16px;font-weight:600;font-size:16px;background:var(--ink);color:var(--bg);cursor:pointer}
+.btn:disabled{background:var(--line);color:var(--ink-3);cursor:default}
+.btn.sec{background:transparent;color:var(--ink);border:1px solid var(--line);margin-top:8px}
+.aviso{font-size:14px;color:var(--ink-2);text-align:center;margin:0 0 10px}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:10px;font-size:14px;max-width:min(92vw,520px);box-shadow:0 6px 24px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+.faixa{display:none;background:var(--warn-soft);color:var(--warn);font-size:14px;padding:10px 14px;border-radius:10px;margin-top:18px}
+.faixa.on{display:block}
+.instalar{display:none;margin-top:18px}
+.instalar.on{display:block}
+.rod{margin-top:36px;font-size:12px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<main class="wrap" id="app" aria-live="polite"></main>
+<div class="toast" id="toast" role="status"></div>
+<script src="questoes.js"></script>
+<script>
+(function(){
+  "use strict";
+  var S = window.SEMANA, APP = document.getElementById("app");
+  var KEY = "etec-" + S.id;
+  var params = new URLSearchParams(location.search);
+  var PREVIEW = params.get("ver") === "tudo";
+  var deferredInstall = null;
+
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {} }catch(e){ return {} } }
+  function save(st){ try{ localStorage.setItem(KEY, JSON.stringify(st)) }catch(e){} }
+  var st = load(); st.r = st.r || {}; st.env = st.env || {};
+
+  function hojeISO(){ var d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0") }
+  function dm(iso){ var p=iso.split("-"); return p[2]+"/"+p[1] }
+  var HOJE = hojeISO();
+  var LETRAS = ["A","B","C","D","E"];
+
+  function respondidas(dia){ return dia.q.filter(function(n){ return st.r[n] }).length }
+  function liberado(dia){ return PREVIEW || dia.data <= HOJE }
+  function status(dia){
+    var tot=dia.q.length, r=respondidas(dia);
+    if(st.env[dia.sig]) return {c:"ok", t:"Enviada"};
+    if(!liberado(dia)) return {c:"", t:"Em breve"};
+    if(r===tot) return {c:"pend", t:"Falta enviar"};
+    if(dia.data===HOJE) return {c:"hoje", t:"Hoje"};
+    if(dia.data<HOJE) return {c:"atr", t:"Atrasada"};
+    return {c:"hoje", t:"Aberta"};
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]}) }
+
+  function toast(msg){ var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toast._t); toast._t=setTimeout(function(){t.classList.remove("on")},4200) }
+
+  function pendentesEnvio(){ return S.dias.filter(function(d){ return !st.env[d.sig] && respondidas(d)===d.q.length }) }
+
+  function home(){
+    var total=0, feitas=0, bars="", leg="";
+    S.dias.forEach(function(d){
+      total+=d.q.length; var r=respondidas(d); feitas+=r;
+      bars+='<span><i style="width:'+(100*r/d.q.length)+'%"></i></span>';
+      leg+='<span>'+d.sig+'</span>';
+    });
+    var hoje = S.dias.filter(function(d){return d.data===HOJE})[0];
+    var pend = pendentesEnvio();
+    var html = '<p class="eyebrow">Myrela · Vestibulinho Etec</p>'
+      + '<h1>Questão do dia</h1>'
+      + '<p class="sub">'+esc(S.titulo)+' · '+dm(S.dias[0].data)+' a '+dm(S.dias[S.dias.length-1].data)+'</p>'
+      + '<div class="faixa'+(pend.length?' on':'')+'">Você tem respostas guardadas que ainda não foram enviadas para a Lucia: '+pend.map(function(d){return d.nome}).join(", ")+'.</div>'
+      + '<div class="instalar'+(deferredInstall?' on':'')+'" id="inst"><button class="btn sec" id="btnInst">Instalar o app no celular</button></div>'
+      + '<div class="prog"><span class="num">'+feitas+'</span><span class="de">de '+total+' questões respondidas</span></div>'
+      + '<div class="bars" aria-hidden="true">'+bars+'</div><div class="legend" aria-hidden="true">'+leg+'</div>'
+      + '<ul class="dias">';
+    S.dias.forEach(function(d){
+      var s=status(d), n=d.q.length, r=respondidas(d);
+      html += '<li><button class="dia" data-dia="'+d.sig+'"'+(liberado(d)?'':' disabled')+'>'
+        + '<span class="d">'+d.data.slice(8)+'</span>'
+        + '<span class="info"><span class="nome">'+d.nome+(d===hoje?' · hoje':'')+'</span><br>'
+        + '<span class="meta">'+(n===1?'1 questão':n+' questões')+(r&&r<n?' · '+r+' respondida'+(r>1?'s':''):'')+'</span></span>'
+        + '<span class="chip '+s.c+'">'+s.t+'</span></button></li>';
+    });
+    html += '</ul><p class="rod">Questões oficiais do Vestibulinho Etec. Suas respostas ficam guardadas no celular, mesmo sem internet.</p>';
+    APP.innerHTML = html;
+    APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ location.hash=b.dataset.dia } });
+    var bi=document.getElementById("btnInst"); if(bi) bi.onclick=instalar;
+    window.scrollTo(0,0);
+  }
+
+  function diaView(sig){
+    var dia=S.dias.filter(function(d){return d.sig===sig})[0];
+    if(!dia || !liberado(dia)){ location.hash=""; return }
+    var enviado=!!st.env[dia.sig], vistos={}, html='<button class="voltar" id="voltar">← Semana</button>'
+      + '<p class="eyebrow">'+dia.nome+' · '+dm(dia.data)+'</p>'
+      + '<h2>'+(dia.q.length===1?'Questão do dia':dia.q.length+' questões')+'</h2>'
+      + '<p class="sub">'+(enviado?'Enviada para a Lucia. As respostas estão travadas.':'Escolha uma alternativa em cada questão.')+'</p>';
+    dia.q.forEach(function(n,i){
+      var q=S.questoes[n], tx="";
+      if(q.texto){
+        var corpo=S.textos[q.texto];
+        if(vistos[q.texto]) tx='<details class="texto"><summary>Ver o texto novamente</summary>'+corpo+'</details>';
+        else tx='<div class="texto"><p class="eyebrow" style="margin-bottom:8px">'+(q.texto==="poema"?"Leia o poema":"Leia o texto")+'</p>'+corpo+'</div>';
+        vistos[q.texto]=1;
+      }
+      html += '<section class="q" aria-label="Questão '+(i+1)+'">'
+        + '<div class="qhead"><span class="n">'+(dia.q.length>1?(i+1)+' de '+dia.q.length:'Questão')+'</span><span class="area">'+q.area+'</span></div>'
+        + '<p class="fonte">'+S.prova+' · questão '+String(n).padStart(2,"0")+'</p>'
+        + tx + '<div class="enun">'+q.enun+'</div>'
+        + (q.obs?'<p class="obs">'+q.obs+'</p>':'')
+        + '<ul class="alts">';
+      q.alt.forEach(function(a,k){
+        var L=LETRAS[k];
+        html += '<li><button class="alt" data-q="'+n+'" data-l="'+L+'" aria-pressed="'+(st.r[n]===L)+'"'+(enviado?' disabled':'')+'><span class="l">'+L+'</span><span class="t">'+a+'</span></button></li>';
+      });
+      html += '</ul></section>';
+    });
+    var r=respondidas(dia), tot=dia.q.length;
+    html += '<div class="barra"><div class="in">'
+      + '<p class="aviso" id="aviso">'+(enviado?'Enviada em '+new Date(st.env[dia.sig]).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):(r<tot?'Faltam '+(tot-r)+' de '+tot:'Tudo respondido. Agora é só enviar.'))+'</p>'
+      + '<button class="btn" id="enviar"'+(r<tot?' disabled':'')+'>'+(enviado?'Enviar de novo':'Enviar para a Lucia')+'</button>'
+      + '</div></div>';
+    APP.innerHTML=html;
+    document.getElementById("voltar").onclick=function(){ location.hash="" };
+    APP.querySelectorAll(".alt").forEach(function(b){
+      b.onclick=function(){
+        var n=b.dataset.q; st.r[n]=b.dataset.l; save(st);
+        APP.querySelectorAll('.alt[data-q="'+n+'"]').forEach(function(x){ x.setAttribute("aria-pressed", String(x===b)) });
+        var r2=respondidas(dia); document.getElementById("enviar").disabled = r2<tot;
+        document.getElementById("aviso").textContent = r2<tot ? 'Faltam '+(tot-r2)+' de '+tot : 'Tudo respondido. Agora é só enviar.';
+      };
+    });
+    document.getElementById("enviar").onclick=function(){ enviar(dia) };
+    window.scrollTo(0,0);
+  }
+
+  function mensagem(dia){
+    var linhas=["Myrela · Etec · "+dia.nome+" "+dm(dia.data)];
+    dia.q.forEach(function(n,i){ linhas.push((dia.q.length>1?(i+1)+") ":"")+"Questão "+String(n).padStart(2,"0")+": "+st.r[n]) });
+    linhas.push("Código: "+S.id+"-"+dia.sig+"-"+dia.q.map(function(n){return st.r[n]}).join(""));
+    return linhas.join("\n");
+  }
+
+  function enviar(dia){
+    if(!navigator.onLine){
+      toast("Sem internet agora. Suas respostas estão guardadas no celular. Quando a internet voltar, toque em Enviar.");
+      return;
+    }
+    var url="https://wa.me/?text="+encodeURIComponent(mensagem(dia));
+    st.env[dia.sig]=Date.now(); save(st);
+    window.open(url,"_blank") || (location.href=url);
+    diaView(dia.sig);
+    toast("Abrindo o WhatsApp. Escolha a Lucia e toque em enviar.");
+  }
+
+  function instalar(){
+    if(!deferredInstall) return;
+    deferredInstall.prompt();
+    deferredInstall.userChoice.finally(function(){ deferredInstall=null; var e=document.getElementById("inst"); if(e) e.classList.remove("on") });
+  }
+  window.addEventListener("beforeinstallprompt",function(e){ e.preventDefault(); deferredInstall=e; var el=document.getElementById("inst"); if(el) el.classList.add("on") });
+  window.addEventListener("online",function(){ if(pendentesEnvio().length) toast("A internet voltou. Você tem respostas para enviar à Lucia.") });
+
+  function rota(){ var h=location.hash.slice(1); if(h) diaView(h); else home() }
+  window.addEventListener("hashchange",rota);
+  rota();
+
+  if("serviceWorker" in navigator){ window.addEventListener("load",function(){ navigator.serviceWorker.register("sw.js") }) }
+})();
+</script>
+</body>
+</html>
