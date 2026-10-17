@@ -120,9 +120,10 @@ details.texto[open] summary{margin-bottom:10px}
 (function(){
   "use strict";
   var S = window.SEMANA, APP = document.getElementById("app");
-  var KEY = "etec-" + S.id;
   var params = new URLSearchParams(location.search);
   var PREVIEW = params.get("ver") === "tudo";
+  // Pré-visualização guarda respostas à parte, para os testes não se misturarem com as reais.
+  var KEY = "etec-" + S.id + (PREVIEW ? "-teste" : "");
   var deferredInstall = null;
 
   function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {} }catch(e){ return {} } }
@@ -163,7 +164,8 @@ details.texto[open] summary{margin-bottom:10px}
     var html = '<p class="eyebrow">Myrela · Vestibulinho Etec</p>'
       + '<h1>Questão do dia</h1>'
       + '<p class="sub">'+esc(S.titulo)+' · '+dm(S.dias[0].data)+' a '+dm(S.dias[S.dias.length-1].data)+'</p>'
-      + '<div class="faixa'+(pend.length?' on':'')+'">Você tem respostas guardadas que ainda não foram enviadas para o professor: '+pend.map(function(d){return d.nome}).join(", ")+'.</div>'
+      + (PREVIEW?'<div class="faixa on">Modo de teste: todos os dias abertos e nada daqui vai para o app da aluna. <button class="btn sec" id="limpar" style="margin-top:10px">Apagar respostas de teste</button></div>':'')
+      + '<div class="faixa'+(pend.length&&!PREVIEW?' on':'')+'">Você tem respostas guardadas que ainda não foram enviadas para o professor: '+pend.map(function(d){return d.nome}).join(", ")+'.</div>'
       + '<div class="instalar'+(deferredInstall?' on':'')+'" id="inst"><button class="btn sec" id="btnInst">Instalar o app no celular</button></div>'
       + '<div class="prog"><span class="num">'+feitas+'</span><span class="de">de '+total+' questões respondidas</span></div>'
       + '<div class="bars" aria-hidden="true">'+bars+'</div><div class="legend" aria-hidden="true">'+leg+'</div>'
@@ -180,6 +182,7 @@ details.texto[open] summary{margin-bottom:10px}
     APP.innerHTML = html;
     APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ location.hash=b.dataset.dia } });
     var bi=document.getElementById("btnInst"); if(bi) bi.onclick=instalar;
+    var lp=document.getElementById("limpar"); if(lp) lp.onclick=function(){ st={r:{},env:{}}; save(st); home(); toast("Respostas de teste apagadas.") };
     window.scrollTo(0,0);
   }
 
@@ -237,6 +240,7 @@ details.texto[open] summary{margin-bottom:10px}
   }
 
   function enviar(dia){
+    if(PREVIEW){ toast("Modo de teste: o envio só funciona no link normal da aluna."); return; }
     if(!navigator.onLine){
       toast("Sem internet agora. Suas respostas estão guardadas no celular. Quando a internet voltar, toque em Enviar.");
       return;
