@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Questão do Dia</title>
+<title>Treino de interpretação</title>
 <meta name="description" content="Questões do Vestibulinho Etec para a Myrela, uma por dia.">
 <meta name="theme-color" content="#F5F2EC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
@@ -148,12 +148,11 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
 <body>
 <main class="wrap" id="app" aria-live="polite"></main>
 <div class="toast" id="toast" role="status"></div>
-<script src="questoes.js"></script>
 <script src="treino.js"></script>
 <script>
 (function(){
   "use strict";
-  var S = window.SEMANA, APP = document.getElementById("app");
+  var S = window.SEMANA || {id:"S1", dias:[]}, APP = document.getElementById("app");
   var params = new URLSearchParams(location.search);
   var PREVIEW = params.get("ver") === "tudo";
   // Pré-visualização guarda respostas à parte, para os testes não se misturarem com as reais.
@@ -315,8 +314,8 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   }
 
   function treinoHome(){
-    var html='<div class="topo"><button class="voltar" id="voltar">← Início</button></div>'
-      + '<p class="eyebrow">Exercício complementar</p><h2>'+T.titulo+'</h2>'
+    var html='<p class="eyebrow">Myrela · Vestibulinho Etec</p><h1>'+T.titulo+'</h1>'
+      + '<div class="instalar'+(deferredInstall?' on':'')+'" id="inst"><button class="btn sec" id="btnInst">Instalar o app no celular</button></div>'
       + '<p class="sub">Estes exercícios não são de provas oficiais da Etec. Eles treinam uma coisa muito importante: ler, entender o que a questão pergunta e escolher só os números que servem.</p>'
       + '<div class="pdc"><div><b class="big">P</b><span><b>Pergunta.</b> O que eu preciso descobrir?</span></div>'
       + '<div><b class="big">D</b><span><b>Dados.</b> Quais números ajudam a responder? Alguns números estão no texto só para distrair.</span></div>'
@@ -338,7 +337,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
       + '<button class="btn" id="tenviar"'+(f?'':' disabled')+'>'+(ts.env?'Enviar de novo':'Enviar para o professor')+'</button></div></div>';
     if(PREVIEW) html+='<button class="btn sec" id="tlimpar">Apagar respostas de teste do treino</button>';
     APP.innerHTML=html;
-    document.getElementById("voltar").onclick=voltar;
+    var bi=document.getElementById("btnInst"); if(bi) bi.onclick=instalar;
     APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ location.hash="T"+b.dataset.t } });
     document.getElementById("tenviar").onclick=enviarTreino;
     var tl=document.getElementById("tlimpar"); if(tl) tl.onclick=function(){ ts={q:{}}; tsave(); treinoHome(); toast("Respostas de teste do treino apagadas.") };
@@ -346,13 +345,13 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   }
 
   function treinoQ(n){
-    var x=tq(n); if(!x){ location.replace("#TREINO"); return }
+    var x=tq(n); if(!x){ location.replace("#"); return }
     var s=tst(n), i=T.q.indexOf(x), ult=s.tent[s.tent.length-1], conferido=!!s.conf || s.fim;
     var sel = s.fim ? ult : s.sel, acertou = s.fim && ult.join("")===x.certo, revelou = s.fim && !acertou;
     var html='<div class="topo"><button class="voltar" id="voltar">← Treino</button><span class="navdias"><button id="ant" aria-label="Questão anterior"'+(i===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próxima questão"'+(i===T.q.length-1?' disabled':'')+'>›</button></span></div>'
       + '<p class="eyebrow">'+T.niveis[x.nivel]+'</p><h2>'+x.n+'. '+x.nome+'</h2>'
       + '<section class="q tq"><div class="texto">'+x.texto.map(function(p,k){ return '<p>'+(k===x.texto.length-1?'<mark class="marca">'+esc(p)+'</mark>':esc(p))+'</p>' }).join("")+'</div>'
-      + '<div class="tarefa"><p class="eyebrow">Sua tarefa</p><p>Para responder a <mark class="marca">pergunta amarela</mark>, alguém teria que fazer uma conta.</p><p>Você <b>não vai fazer a conta</b>. Você só vai escolher os <b>3 números que entrariam nessa conta</b>. Os outros números estão no texto só para confundir.</p></div><ul class="alts">';
+      + '<div class="tarefa"><p class="eyebrow">Sua tarefa</p><p>Você <b>não vai fazer a conta agora</b>. Você só vai escolher os <b>3 números que entrariam nessa conta</b>.</p><p>Entender que os outros números no texto aparecem só para confundir.</p></div><ul class="alts">';
     x.alt.forEach(function(a,k){
       var L=LETRAS7[k], on=sel.indexOf(L)>=0, cls="";
       if(conferido && on) cls = x.certo.indexOf(L)>=0 ? " certa" : " errada";
@@ -374,7 +373,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     else html+= i<T.q.length-1 ? '<button class="btn" id="seguir">Próxima questão</button>' : '<button class="btn" id="seguir">Terminar e enviar</button>';
     html+='</div></div>';
     APP.innerHTML=html;
-    document.getElementById("voltar").onclick=function(){ location.replace("#TREINO") };
+    document.getElementById("voltar").onclick=function(){ location.replace("#") };
     document.getElementById("ant").onclick=function(){ if(i>0) location.replace("#T"+T.q[i-1].n) };
     document.getElementById("prox").onclick=function(){ if(i<T.q.length-1) location.replace("#T"+T.q[i+1].n) };
     APP.querySelectorAll(".alt").forEach(function(b){ b.onclick=function(){
@@ -389,7 +388,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
       s.tent.push(s.sel.slice()); s.conf=true; if(s.sel.join("")===x.certo || s.tent.length>=MAXT) s.fim=true; delete ts.env; tsave(); treinoQ(n);
     };
     var d=document.getElementById("denovo"); if(d) d.onclick=function(){ s.conf=false; s.sel=s.sel.filter(function(L){ return x.certo.indexOf(L)>=0 }); tsave(); treinoQ(n) };
-    var g=document.getElementById("seguir"); if(g) g.onclick=function(){ location.replace(i<T.q.length-1 ? "#T"+T.q[i+1].n : "#TREINO") };
+    var g=document.getElementById("seguir"); if(g) g.onclick=function(){ location.replace(i<T.q.length-1 ? "#T"+T.q[i+1].n : "#") };
     var porq=APP.querySelector(".porque, .fb");
     if(conferido && porq) porq.scrollIntoView({block:"center"}); else window.scrollTo(0,0);
   }
@@ -426,7 +425,8 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   // Voltar: usa o histórico quando a aluna veio da lista (o botão voltar do Android faz o mesmo).
   var veioDaLista=false;
   function voltar(){ if(veioDaLista){ veioDaLista=false; history.back() } else location.replace("#") }
-  function rota(){ var h=location.hash.slice(1); if(h==="TREINO") treinoHome(); else if(/^T\d+$/.test(h)) treinoQ(+h.slice(1)); else if(h) diaView(h); else home() }
+  // Só o treino fica no app (pedido da Lucia, 30/10); as questões da semana saíram.
+  function rota(){ var h=location.hash.slice(1); if(/^T\d+$/.test(h)) treinoQ(+h.slice(1)); else treinoHome() }
   window.addEventListener("hashchange",rota);
   rota();
 
