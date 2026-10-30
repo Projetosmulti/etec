@@ -127,6 +127,9 @@ details.texto[open] summary{margin-bottom:10px}
 .sim{color:var(--ok);font-weight:600}.nao{color:var(--accent);font-weight:600}
 .nivel{margin:28px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 .tq .texto p:last-child{margin-bottom:0}
+mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,transparent 96%);color:#1B1A18;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:600}
+.tarefa{background:var(--bg);border-radius:12px;padding:14px 16px;margin-top:4px}
+.tarefa p{margin:4px 0 0}.tarefa .eyebrow{margin:0}
 .alt.multi .l{border-radius:7px}
 .alt.certa{border-color:var(--ok);background:var(--ok-soft)}
 .alt.certa .l{background:var(--ok);border-color:var(--ok);color:#fff}
@@ -323,7 +326,7 @@ details.texto[open] summary{margin-bottom:10px}
       + '<p><b>Pergunta:</b> quanto ela pagaria por 10 caixas?</p>'
       + '<p>450 alunos? <span class="nao">Não.</span> 15 salas? <span class="nao">Não.</span> 12 lápis por caixa? <span class="nao">Não.</span><br>6 caixas por R$ 48,00? <span class="sim">Sim.</span> 10 caixas? <span class="sim">Sim.</span></p>'
       + '<p>Os três números: <b>6 caixas, R$ 48,00 e 10 caixas.</b></p></div></details>'
-      + '<p class="sub" style="margin-top:14px">Em cada questão, escolha <b>3 letras</b> e toque em Conferir. Se errar, aparece uma explicação e você tenta de novo.</p>';
+      + '<p class="sub" style="margin-top:14px">Em cada questão, a pergunta vem <mark class="marca">marcada em amarelo</mark>. Escolha os <b>3 números que você usaria na conta</b> e toque em Conferir. Se errar, aparece uma explicação e você tenta de novo.</p>';
     var nv=0;
     T.q.forEach(function(x){
       if(x.nivel!==nv){ if(nv) html+='</ul>'; nv=x.nivel; html+='<p class="nivel">'+T.niveis[nv]+'</p><ul class="dias" style="margin-top:8px">' }
@@ -348,8 +351,8 @@ details.texto[open] summary{margin-bottom:10px}
     var sel = s.fim ? ult : s.sel, acertou = s.fim && ult.join("")===x.certo, revelou = s.fim && !acertou;
     var html='<div class="topo"><button class="voltar" id="voltar">← Treino</button><span class="navdias"><button id="ant" aria-label="Questão anterior"'+(i===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próxima questão"'+(i===T.q.length-1?' disabled':'')+'>›</button></span></div>'
       + '<p class="eyebrow">'+T.niveis[x.nivel]+'</p><h2>'+x.n+'. '+x.nome+'</h2>'
-      + '<section class="q tq"><div class="texto">'+x.texto.map(function(p){ return '<p>'+esc(p)+'</p>' }).join("")+'</div>'
-      + '<p style="margin:0"><b>Escolha os três números necessários.</b> Não faça conta.</p><ul class="alts">';
+      + '<section class="q tq"><div class="texto">'+x.texto.map(function(p,k){ return '<p>'+(k===x.texto.length-1?'<mark class="marca">'+esc(p)+'</mark>':esc(p))+'</p>' }).join("")+'</div>'
+      + '<div class="tarefa"><p class="eyebrow">Sua tarefa</p><p>Para responder a <mark class="marca">pergunta amarela</mark>, alguém teria que fazer uma conta.</p><p>Você <b>não vai fazer a conta</b>. Você só vai escolher os <b>3 números que entrariam nessa conta</b>. Os outros números estão no texto só para confundir.</p></div><ul class="alts">';
     x.alt.forEach(function(a,k){
       var L=LETRAS7[k], on=sel.indexOf(L)>=0, cls="";
       if(conferido && on) cls = x.certo.indexOf(L)>=0 ? " certa" : " errada";
