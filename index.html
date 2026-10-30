@@ -113,6 +113,32 @@ details.texto[open] summary{margin-bottom:10px}
 .faixa.on{display:block}
 .instalar{display:none;margin-top:18px}
 .instalar.on{display:block}
+/* treino complementar */
+.card-treino{display:flex;align-items:center;gap:16px;width:100%;margin-top:36px;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--paper);text-align:left;cursor:pointer}
+.card-treino .info{flex:1}
+.card-treino .tit{font-family:var(--serif);font-size:22px;line-height:1.2}
+.card-treino .meta{font-size:14px;color:var(--ink-2)}
+.pdc{display:grid;gap:10px;margin:18px 0}
+.pdc div{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.pdc b.big{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:var(--serif);font-size:22px;font-weight:400}
+.pdc div.depois{opacity:.55}
+.exemplo{border-left:2px solid var(--line);padding-left:14px;margin:12px 0;font-size:15px}
+.exemplo p{margin:0 0 8px}
+.sim{color:var(--ok);font-weight:600}.nao{color:var(--accent);font-weight:600}
+.nivel{margin:28px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.tq .texto p:last-child{margin-bottom:0}
+.alt.multi .l{border-radius:7px}
+.alt.certa{border-color:var(--ok);background:var(--ok-soft)}
+.alt.certa .l{background:var(--ok);border-color:var(--ok);color:#fff}
+.alt.errada{border-color:var(--accent);background:var(--accent-soft)}
+.alt.errada .l{background:var(--accent);border-color:var(--accent);color:#fff}
+.porque{margin:6px 0 4px 42px;font-size:15px;color:var(--ink)}
+.porque b{color:var(--accent)}
+.fb{margin-top:18px;border-radius:12px;padding:16px 18px}
+.fb.ok{background:var(--ok-soft)}.fb.ok .eyebrow{color:var(--ok)}
+.fb.dica{background:var(--warn-soft)}.fb.dica .eyebrow{color:var(--warn)}
+.fb p{margin:6px 0 0}
+.fb .grande{font-family:var(--serif);font-size:22px;margin-top:2px}
 .rod{margin-top:36px;font-size:12px;color:var(--ink-3)}
 </style>
 </head>
@@ -120,6 +146,7 @@ details.texto[open] summary{margin-bottom:10px}
 <main class="wrap" id="app" aria-live="polite"></main>
 <div class="toast" id="toast" role="status"></div>
 <script src="questoes.js"></script>
+<script src="treino.js"></script>
 <script>
 (function(){
   "use strict";
@@ -182,9 +209,10 @@ details.texto[open] summary{margin-bottom:10px}
         + '<span class="meta">'+(n===1?'1 questão':n+' questões')+(r&&r<n?' · '+r+' respondida'+(r>1?'s':''):'')+'</span></span>'
         + '<span class="chip '+s.c+'">'+s.t+'</span></button></li>';
     });
-    html += '</ul><p class="rod">Questões oficiais do Vestibulinho Etec. Suas respostas ficam guardadas no celular, mesmo sem internet.</p>';
+    html += '</ul>' + cardTreino() + '<p class="rod">Questões oficiais do Vestibulinho Etec. Suas respostas ficam guardadas no celular, mesmo sem internet.</p>';
     APP.innerHTML = html;
     APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ veioDaLista=true; location.hash=b.dataset.dia } });
+    var ct=document.getElementById("cardTreino"); if(ct) ct.onclick=function(){ veioDaLista=true; location.hash="TREINO" };
     var bi=document.getElementById("btnInst"); if(bi) bi.onclick=instalar;
     var lp=document.getElementById("limpar"); if(lp) lp.onclick=function(){ st={r:{},env:{}}; save(st); home(); toast("Respostas de teste apagadas.") };
     window.scrollTo(0,0);
@@ -258,6 +286,132 @@ details.texto[open] summary{margin-bottom:10px}
     toast("Abrindo o WhatsApp. Escolha o professor e toque em enviar.");
   }
 
+  // ---------- Exercício complementar: treino de interpretação ----------
+  var T = window.TREINO, TKEY = "etec-treino-" + T.id + (PREVIEW ? "-teste" : "");
+  function tload(){ try{ return JSON.parse(localStorage.getItem(TKEY)) || {} }catch(e){ return {} } }
+  var ts = tload(); ts.q = ts.q || {};
+  function tsave(){ try{ localStorage.setItem(TKEY, JSON.stringify(ts)) }catch(e){} }
+  function tq(n){ return T.q.filter(function(x){ return x.n===n })[0] }
+  function tst(n){ return ts.q[n] = ts.q[n] || {tent:[], fim:false, sel:[]} }
+  function feitas(){ return T.q.filter(function(x){ return ts.q[x.n] && ts.q[x.n].fim }).length }
+  var MAXT = 3; // na 3ª tentativa errada, mostra a resposta
+
+  function cardTreino(){
+    var f=feitas();
+    return '<button class="card-treino" id="cardTreino"><span class="info"><span class="eyebrow">Exercício complementar</span><br><span class="tit">'+T.titulo+'</span><br>'
+      + '<span class="meta">10 questões · sem fazer contas · '+(f?f+' de 10 feitas':'a explicação aparece na hora')+'</span></span>'
+      + '<span class="chip '+(ts.env?'ok':f===10?'pend':'hoje')+'">'+(ts.env?'Enviado':f===10?'Falta enviar':'Abrir')+'</span></button>';
+  }
+
+  function statusT(x){
+    var s=ts.q[x.n];
+    if(!s || !s.tent.length) return {c:"", t:"A fazer"};
+    if(!s.fim) return {c:"pend", t:"Tentando"};
+    if(s.tent[s.tent.length-1].join("")===x.certo) return {c:"ok", t: s.tent.length===1?"De primeira":"Acertou na "+s.tent.length+"ª"};
+    return {c:"atr", t:"Ver de novo"};
+  }
+
+  function treinoHome(){
+    var html='<div class="topo"><button class="voltar" id="voltar">← Início</button></div>'
+      + '<p class="eyebrow">Exercício complementar</p><h2>'+T.titulo+'</h2>'
+      + '<p class="sub">Estes exercícios não são de provas oficiais da Etec. Eles treinam uma coisa muito importante: ler, entender o que a questão pergunta e escolher só os números que servem.</p>'
+      + '<div class="pdc"><div><b class="big">P</b><span><b>Pergunta.</b> O que eu preciso descobrir?</span></div>'
+      + '<div><b class="big">D</b><span><b>Dados.</b> Quais números ajudam a responder? Alguns números estão no texto só para distrair.</span></div>'
+      + '<div class="depois"><b class="big">C</b><span><b>Conta.</b> Fica para depois. Hoje, nada de contas!</span></div></div>'
+      + '<details class="texto"><summary>Ver o exemplo</summary><div class="exemplo">'
+      + '<p>Uma escola tem 450 alunos, distribuídos em 15 salas de aula. Uma professora comprou 6 caixas de lápis por R$ 48,00. Cada caixa contém 12 lápis.</p>'
+      + '<p><b>Pergunta:</b> quanto ela pagaria por 10 caixas?</p>'
+      + '<p>450 alunos? <span class="nao">Não.</span> 15 salas? <span class="nao">Não.</span> 12 lápis por caixa? <span class="nao">Não.</span><br>6 caixas por R$ 48,00? <span class="sim">Sim.</span> 10 caixas? <span class="sim">Sim.</span></p>'
+      + '<p>Os três números: <b>6 caixas, R$ 48,00 e 10 caixas.</b></p></div></details>'
+      + '<p class="sub" style="margin-top:14px">Em cada questão, escolha <b>3 letras</b> e toque em Conferir. Se errar, aparece uma explicação e você tenta de novo.</p>';
+    var nv=0;
+    T.q.forEach(function(x){
+      if(x.nivel!==nv){ if(nv) html+='</ul>'; nv=x.nivel; html+='<p class="nivel">'+T.niveis[nv]+'</p><ul class="dias" style="margin-top:8px">' }
+      var s=statusT(x);
+      html+='<li><button class="dia" data-t="'+x.n+'"><span class="d">'+x.n+'</span><span class="info"><span class="nome">'+x.nome+'</span></span><span class="chip '+s.c+'">'+s.t+'</span></button></li>';
+    });
+    var f=feitas();
+    html+='</ul><div style="height:24px"></div><div class="barra"><div class="in"><p class="aviso">'+(ts.env?'Enviado em '+new Date(ts.env).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):f+' de 10 feitas')+'</p>'
+      + '<button class="btn" id="tenviar"'+(f?'':' disabled')+'>'+(ts.env?'Enviar de novo':'Enviar para o professor')+'</button></div></div>';
+    if(PREVIEW) html+='<button class="btn sec" id="tlimpar">Apagar respostas de teste do treino</button>';
+    APP.innerHTML=html;
+    document.getElementById("voltar").onclick=voltar;
+    APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ location.hash="T"+b.dataset.t } });
+    document.getElementById("tenviar").onclick=enviarTreino;
+    var tl=document.getElementById("tlimpar"); if(tl) tl.onclick=function(){ ts={q:{}}; tsave(); treinoHome(); toast("Respostas de teste do treino apagadas.") };
+    window.scrollTo(0,0);
+  }
+
+  function treinoQ(n){
+    var x=tq(n); if(!x){ location.replace("#TREINO"); return }
+    var s=tst(n), i=T.q.indexOf(x), ult=s.tent[s.tent.length-1], conferido=!!s.conf || s.fim;
+    var sel = s.fim ? ult : s.sel, acertou = s.fim && ult.join("")===x.certo, revelou = s.fim && !acertou;
+    var html='<div class="topo"><button class="voltar" id="voltar">← Treino</button><span class="navdias"><button id="ant" aria-label="Questão anterior"'+(i===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próxima questão"'+(i===T.q.length-1?' disabled':'')+'>›</button></span></div>'
+      + '<p class="eyebrow">'+T.niveis[x.nivel]+'</p><h2>'+x.n+'. '+x.nome+'</h2>'
+      + '<section class="q tq"><div class="texto">'+x.texto.map(function(p){ return '<p>'+esc(p)+'</p>' }).join("")+'</div>'
+      + '<p style="margin:0"><b>Escolha os três números necessários.</b> Não faça conta.</p><ul class="alts">';
+    x.alt.forEach(function(a,k){
+      var L=LETRAS7[k], on=sel.indexOf(L)>=0, cls="";
+      if(conferido && on) cls = x.certo.indexOf(L)>=0 ? " certa" : " errada";
+      if(revelou && !on && x.certo.indexOf(L)>=0) cls=" certa";
+      html+='<li><button class="alt multi'+cls+'" data-l="'+L+'" aria-pressed="'+on+'"'+(conferido?' disabled':'')+'><span class="l">'+L+'</span><span class="t">'+esc(a)+'</span></button>';
+      if(conferido && on && x.certo.indexOf(L)<0) html+='<p class="porque"><b>Por que não?</b> '+esc(x.por[L])+'</p>';
+      html+='</li>';
+    });
+    html+='</ul>';
+    if(conferido){
+      if(acertou) html+='<div class="fb ok"><p class="eyebrow">'+(s.tent.length===1?'Acertou de primeira':'Agora sim')+'</p><p class="grande">Isso! Você achou os 3 números.</p><p>'+esc(x.resumo)+'</p></div>';
+      else if(revelou) html+='<div class="fb dica"><p class="eyebrow">Os números certos são '+x.certo.split("").join(", ")+'</p><p>'+esc(x.resumo)+'</p><p><b>Para a próxima:</b> '+esc(x.pense)+'</p></div>';
+      else { var bons=ult.filter(function(L){ return x.certo.indexOf(L)>=0 }).length;
+        html+='<div class="fb dica"><p class="eyebrow">Pense assim</p><p>'+(bons?'Você já acertou '+(bons===1?'1 número':bons+' números')+' (os verdes). Troque '+(3-bons===1?'o vermelho':'os vermelhos')+'.':'Nenhum desses números serve. Leia a pergunta de novo, com calma.')+'</p><p>'+esc(x.pense)+'</p></div>'; }
+    }
+    html+='</section><div style="height:24px"></div><div class="barra"><div class="in">';
+    if(!conferido) html+='<p class="aviso" id="aviso">'+avisoSel(sel.length)+'</p><button class="btn" id="conferir"'+(sel.length===3?'':' disabled')+'>Conferir</button>';
+    else if(!s.fim) html+='<p class="aviso">Tentativa '+s.tent.length+' de '+MAXT+'</p><button class="btn" id="denovo">Tentar de novo</button>';
+    else html+= i<T.q.length-1 ? '<button class="btn" id="seguir">Próxima questão</button>' : '<button class="btn" id="seguir">Terminar e enviar</button>';
+    html+='</div></div>';
+    APP.innerHTML=html;
+    document.getElementById("voltar").onclick=function(){ location.replace("#TREINO") };
+    document.getElementById("ant").onclick=function(){ if(i>0) location.replace("#T"+T.q[i-1].n) };
+    document.getElementById("prox").onclick=function(){ if(i<T.q.length-1) location.replace("#T"+T.q[i+1].n) };
+    APP.querySelectorAll(".alt").forEach(function(b){ b.onclick=function(){
+      var L=b.dataset.l, k=s.sel.indexOf(L);
+      if(k>=0) s.sel.splice(k,1); else { if(s.sel.length>=3){ toast("Já tem 3 letras. Toque em uma para tirar."); return } s.sel.push(L) }
+      s.sel.sort(); tsave();
+      b.setAttribute("aria-pressed", String(s.sel.indexOf(L)>=0));
+      document.getElementById("conferir").disabled = s.sel.length!==3;
+      document.getElementById("aviso").textContent = avisoSel(s.sel.length);
+    }});
+    var c=document.getElementById("conferir"); if(c) c.onclick=function(){
+      s.tent.push(s.sel.slice()); s.conf=true; if(s.sel.join("")===x.certo || s.tent.length>=MAXT) s.fim=true; delete ts.env; tsave(); treinoQ(n);
+    };
+    var d=document.getElementById("denovo"); if(d) d.onclick=function(){ s.conf=false; s.sel=s.sel.filter(function(L){ return x.certo.indexOf(L)>=0 }); tsave(); treinoQ(n) };
+    var g=document.getElementById("seguir"); if(g) g.onclick=function(){ location.replace(i<T.q.length-1 ? "#T"+T.q[i+1].n : "#TREINO") };
+    var porq=APP.querySelector(".porque, .fb");
+    if(conferido && porq) porq.scrollIntoView({block:"center"}); else window.scrollTo(0,0);
+  }
+  var LETRAS7 = ["A","B","C","D","E","F","G"];
+  function avisoSel(k){ return k===3 ? "Pronto. Toque em Conferir." : "Escolha "+(3-k)+(3-k===1?" letra":" letras")+(k?" (já tem "+k+")":"") }
+
+  function mensagemTreino(){
+    var linhas=["Myrela · "+T.titulo], prim=0;
+    T.q.forEach(function(x){
+      var s=ts.q[x.n]; if(!s || !s.fim) { linhas.push(x.n+" — não fez"); return }
+      var t=s.tent, ok=t[t.length-1].join("")===x.certo; if(ok && t.length===1) prim++;
+      linhas.push(x.n+" — "+t[0].join(", ")+(ok ? (t.length===1?" ✓ de primeira":" · acertou na "+t.length+"ª tentativa") : " · errou "+t.length+" vezes ("+t.map(function(a){return a.join("")}).join(" / ")+")"));
+    });
+    linhas.push("Feitas: "+feitas()+" de 10 · de primeira: "+prim);
+    return linhas.join("\n");
+  }
+  function enviarTreino(){
+    if(PREVIEW){ toast("Modo de teste: o envio só funciona no link normal da aluna."); return }
+    if(!navigator.onLine){ toast("Sem internet agora. Suas respostas estão guardadas. Quando a internet voltar, toque em Enviar."); return }
+    var url="https://wa.me/?text="+encodeURIComponent(mensagemTreino());
+    ts.env=Date.now(); tsave();
+    window.open(url,"_blank") || (location.href=url);
+    treinoHome(); toast("Abrindo o WhatsApp. Escolha o professor e toque em enviar.");
+  }
+
   function instalar(){
     if(!deferredInstall) return;
     deferredInstall.prompt();
@@ -269,7 +423,7 @@ details.texto[open] summary{margin-bottom:10px}
   // Voltar: usa o histórico quando a aluna veio da lista (o botão voltar do Android faz o mesmo).
   var veioDaLista=false;
   function voltar(){ if(veioDaLista){ veioDaLista=false; history.back() } else location.replace("#") }
-  function rota(){ var h=location.hash.slice(1); if(h) diaView(h); else home() }
+  function rota(){ var h=location.hash.slice(1); if(h==="TREINO") treinoHome(); else if(/^T\d+$/.test(h)) treinoQ(+h.slice(1)); else if(h) diaView(h); else home() }
   window.addEventListener("hashchange",rota);
   rota();
 
