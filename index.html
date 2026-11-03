@@ -425,7 +425,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
       + (PREVIEW?'<div class="faixa on">Modo de teste: nada daqui vai para o app da aluna.</div>':'')
       + '<div class="instalar'+(deferredInstall?' on':'')+'" id="inst"><button class="btn sec" id="btnInst">Instalar o app no celular</button></div>'
       + '<button class="card-treino" data-ir="LEITURA"><span class="info"><span class="eyebrow">Leitura · Verissimo</span><br><span class="tit">Comédias para se ler na escola</span><br>'
-      + '<span class="meta">6 crônicas · 18 questões · '+(fl?fl+' de 18 feitas':'leia no livro e responda aqui')+'</span></span>'
+      + '<span class="meta">'+L.cronicas.length+' contos · '+L.q.length+' questões · '+(fl?fl+' de '+L.q.length+' feitas':'leia no livro e responda aqui')+'</span></span>'
       + '<span class="chip '+(ls.env?'ok':fl===L.q.length?'pend':'hoje')+'">'+(ls.env?'Enviado':fl===L.q.length?'Falta enviar':'Abrir')+'</span></button>'
       + '<button class="card-treino" style="margin-top:12px" data-ir="TREINO"><span class="info"><span class="eyebrow">Matemática · sem fazer contas</span><br><span class="tit">'+T.titulo+'</span><br>'
       + '<span class="meta">10 questões · '+(ft?ft+' de 10 feitas':'escolha os números certos')+'</span></span>'
@@ -481,8 +481,8 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     var s=lst(n), i=L.q.indexOf(x), ult=s.tent[s.tent.length-1], conferido=!!s.conf || s.fim;
     var acertou = s.fim && ult===x.certo, revelou = s.fim && !acertou, nq=L.q.filter(function(y){ return y.c===x.c }), k1=nq.indexOf(x)+1;
     var html='<div class="topo"><button class="voltar" id="voltar">← Leitura</button><span class="navdias"><button id="ant" aria-label="Questão anterior"'+(i===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próxima questão"'+(i===L.q.length-1?' disabled':'')+'>›</button></span></div>'
-      + '<p class="eyebrow">Crônica · '+esc(x.c)+' · '+k1+' de '+nq.length+'</p><h2>'+esc(x.c)+'</h2>'
-      + '<section class="q tq"><p class="nota" style="margin:0 0 10px">Tenha o livro aberto nessa crônica.</p>'
+      + '<p class="eyebrow">Conto · '+esc(x.c)+' · '+k1+' de '+nq.length+'</p><h2>'+esc(x.c)+'</h2>'
+      + '<section class="q tq"><p class="nota" style="margin:0 0 10px">Tenha o livro aberto nesse conto.</p>'
       + '<p style="font-size:17px;margin:0"><mark class="marca">'+esc(x.enun)+'</mark></p><ul class="alts">';
     x.alt.forEach(function(a,k){
       var Lt=LETRAS[k], on = s.sel===Lt, cls="";
