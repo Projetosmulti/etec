@@ -151,6 +151,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
 <div class="toast" id="toast" role="status"></div>
 <script src="treino.js"></script>
 <script src="leitura.js"></script>
+<script src="conta.js"></script>
 <script>
 (function(){
   "use strict";
@@ -420,7 +421,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
 
   // ---------- Início: os dois treinos ----------
   function inicio(){
-    var fl=lfeitas(), ft=feitas();
+    var fl=lfeitas(), ft=feitas(), fc=cfeitas();
     var html='<p class="eyebrow">Myrela · Vestibulinho Etec</p><h1>Treinos</h1>'
       + '<p class="sub">Escolha um treino. Se errar, o app explica na hora e você tenta de novo.</p>'
       + (PREVIEW?'<div class="faixa on">Modo de teste: nada daqui vai para o app da aluna.</div>':'')
@@ -430,7 +431,10 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
       + '<span class="chip '+(ls.env?'ok':fl===L.q.length?'pend':'hoje')+'">'+(ls.env?'Enviado':fl===L.q.length?'Falta enviar':'Abrir')+'</span></button>'
       + '<button class="card-treino" style="margin-top:12px" data-ir="TREINO"><span class="info"><span class="eyebrow">Matemática · sem fazer contas</span><br><span class="tit">'+T.titulo+'</span><br>'
       + '<span class="meta">10 questões · '+(ft?ft+' de 10 feitas':'escolha os números certos')+'</span></span>'
-      + '<span class="chip '+(ts.env?'ok':ft===10?'pend':'hoje')+'">'+(ts.env?'Enviado':ft===10?'Falta enviar':'Abrir')+'</span></button>';
+      + '<span class="chip '+(ts.env?'ok':ft===10?'pend':'hoje')+'">'+(ts.env?'Enviado':ft===10?'Falta enviar':'Abrir')+'</span></button>'
+      + '<button class="card-treino" style="margin-top:12px" data-ir="CONTA"><span class="info"><span class="eyebrow">Matemática · regra de três</span><br><span class="tit">'+C.titulo+'</span><br>'
+      + '<span class="meta">10 questões · '+(fc?fc+' de 10 feitas':'agora é fazer a conta')+'</span></span>'
+      + '<span class="chip '+(cs.env?'ok':fc===10?'pend':'hoje')+'">'+(cs.env?'Enviado':fc===10?'Falta enviar':'Abrir')+'</span></button>';
     APP.innerHTML=html;
     APP.querySelectorAll(".card-treino").forEach(function(b){ b.onclick=function(){ location.hash=b.dataset.ir } });
     var bi=document.getElementById("btnInst"); if(bi) bi.onclick=instalar;
@@ -544,6 +548,112 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     leituraHome(); toast("Abrindo o WhatsApp. Escolha o professor e toque em enviar.");
   }
 
+  // ---------- Treino da conta: passo C, mesmas situações do treino de interpretação ----------
+  var C = window.CONTA, CKEY = "etec-conta-" + C.id + (PREVIEW ? "-teste" : "");
+  var cs = (function(){ try{ return JSON.parse(localStorage.getItem(CKEY)) || {} }catch(e){ return {} } })(); cs.q = cs.q || {};
+  function csave(){ try{ localStorage.setItem(CKEY, JSON.stringify(cs)) }catch(e){} }
+  function cq(n){ return C.q.filter(function(x){ return x.n===n })[0] }
+  function cst(n){ return cs.q[n] = cs.q[n] || {tent:[], fim:false, sel:null} }
+  function cfeitas(){ return C.q.filter(function(x){ return cs.q[x.n] && cs.q[x.n].fim }).length }
+  function statusC(x){
+    var s=cs.q[x.n];
+    if(!s || !s.tent.length) return {c:"hoje", t:"Toque aqui"};
+    if(!s.fim) return {c:"pend", t:"Tentando"};
+    if(s.tent[s.tent.length-1]===x.certo) return {c:"ok", t: s.tent.length===1?"De primeira":"Acertou na "+s.tent.length+"ª"};
+    return {c:"atr", t:"Ver de novo"};
+  }
+
+  function contaHome(){
+    var html='<div class="topo"><button class="voltar" id="voltar">← Início</button></div>'
+      + '<p class="eyebrow">Matemática · regra de três</p><h2>'+C.titulo+'</h2>'
+      + '<p class="sub">São as mesmas 10 situações do Treino de interpretação. Agora chegou o <b>C</b> do PDC: a <b>Conta</b>. Faça a conta no caderno e escolha o resultado.</p>'
+      + '<div class="pdc"><div><b class="big">1</b><span>Descubra quanto vale <b>1</b>: divida.</span></div><div><b class="big">2</b><span>Multiplique pela <b>quantidade nova</b> da pergunta.</span></div></div>'
+      + '<p class="faixa on" style="background:var(--ok-soft);color:var(--ok)"><b>Você tem 3 tentativas</b> em cada questão. Na 3ª, o app mostra a resposta certa.</p><ul class="dias" style="margin-top:20px">';
+    C.q.forEach(function(x){
+      var s=statusC(x), t=tq(x.n);
+      html+='<li><button class="dia" data-l="'+x.n+'"><span class="d">'+x.n+'</span><span class="info"><span class="nome">'+esc(t.nome)+'</span></span><span class="chip '+s.c+'">'+s.t+'</span></button></li>';
+    });
+    html+='</ul>';
+    var f=cfeitas();
+    html+='<div style="height:24px"></div><div class="barra"><div class="in"><p class="aviso">'+(cs.env?'Enviado em '+new Date(cs.env).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):f+' de '+C.q.length+' feitas')+'</p>'
+      + '<button class="btn" id="cenviar"'+(f?'':' disabled')+'>'+(cs.env?'Enviar de novo':'Enviar para o professor')+'</button></div></div>';
+    if(PREVIEW) html+='<button class="btn sec" id="climpar">Apagar respostas de teste da conta</button>';
+    APP.innerHTML=html;
+    document.getElementById("voltar").onclick=function(){ location.replace("#") };
+    APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ location.hash="C"+b.dataset.l } });
+    document.getElementById("cenviar").onclick=enviarConta;
+    var ll=document.getElementById("climpar"); if(ll) ll.onclick=function(){ cs={q:{}}; csave(); contaHome(); toast("Respostas de teste da conta apagadas.") };
+    window.scrollTo(0,0);
+  }
+
+  function contaQ(n){
+    var x=cq(n); if(!x){ location.replace("#CONTA"); return }
+    var s=cst(n), i=C.q.indexOf(x), ult=s.tent[s.tent.length-1], conferido=!!s.conf || s.fim;
+    var acertou = s.fim && ult===x.certo, revelou = s.fim && !acertou, t=tq(x.n);
+    var html='<div class="topo"><button class="voltar" id="voltar">← Conta</button><span class="navdias"><button id="ant" aria-label="Questão anterior"'+(i===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próxima questão"'+(i===C.q.length-1?' disabled':'')+'>›</button></span></div>'
+      + '<p class="eyebrow">'+T.niveis[t.nivel]+'</p><h2>'+x.n+'. '+esc(t.nome)+'</h2>'
+      + '<section class="q tq"><div class="texto">'+t.texto.map(function(p,k){ return '<p>'+(k===t.texto.length-1?'<mark class="marca">'+esc(p)+'</mark>':esc(p))+'</p>' }).join("")+'</div>'
+      + '<div class="tarefa"><p class="eyebrow">Os números que você achou no treino</p><p><b>'+esc(x.dados)+'</b></p><p>Agora faça a conta no caderno e escolha o resultado.</p></div><ul class="alts">';
+    x.alt.forEach(function(a,k){
+      var Lt=LETRAS[k], on = s.sel===Lt, cls="";
+      if(conferido && on) cls = Lt===x.certo ? " certa" : " errada";
+      if(revelou && Lt===x.certo) cls=" certa";
+      var riscada = !s.fim && s.tent.indexOf(Lt)>=0 && !on;
+      html+='<li><button class="alt'+cls+'" data-l="'+Lt+'" aria-pressed="'+on+'"'+(conferido||riscada?' disabled':'')+(riscada?' style="opacity:.45;text-decoration:line-through"':'')+'><span class="l">'+Lt+'</span><span class="t">'+esc(a)+'</span></button>';
+      if(conferido && on && Lt!==x.certo) html+='<p class="porque"><b>Pense melhor:</b> '+esc(x.por[Lt])+'</p>';
+      html+='</li>';
+    });
+    html+='</ul>';
+    if(conferido){
+      if(acertou) html+='<div class="fb ok"><p class="eyebrow">'+(s.tent.length===1?'Acertou de primeira':'Agora sim')+'</p><p class="grande">Isso!</p><p>'+esc(x.resumo)+'</p></div>';
+      else if(revelou) html+='<div class="fb dica"><p class="eyebrow">A resposta certa é '+x.certo+'</p><p>'+esc(x.resumo)+'</p></div>';
+      else html+='<div class="fb dica"><p class="eyebrow">Dica</p><p>'+esc(x.pense)+'</p></div>';
+    }
+    html+='</section><div style="height:24px"></div><div class="barra"><div class="in">';
+    if(!conferido) html+='<p class="aviso" id="aviso">'+(s.sel?'Pronto. Toque em Conferir.':'Escolha uma alternativa')+'</p><button class="btn" id="conferir"'+(s.sel?'':' disabled')+'>Conferir</button>';
+    else if(!s.fim) html+='<p class="aviso">Tentativa '+s.tent.length+' de '+MAXT+'</p><button class="btn" id="denovo">Escolher de novo</button>';
+    else html+= i<C.q.length-1 ? '<button class="btn" id="seguir">Próxima questão</button>' : '<button class="btn" id="seguir">Terminar e enviar</button>';
+    html+='</div></div>';
+    APP.innerHTML=html;
+    document.getElementById("voltar").onclick=function(){ location.replace("#CONTA") };
+    document.getElementById("ant").onclick=function(){ if(i>0) location.replace("#C"+C.q[i-1].n) };
+    document.getElementById("prox").onclick=function(){ if(i<C.q.length-1) location.replace("#C"+C.q[i+1].n) };
+    APP.querySelectorAll(".alt").forEach(function(b){ b.onclick=function(){
+      s.sel=b.dataset.l; csave();
+      APP.querySelectorAll(".alt").forEach(function(o){ o.setAttribute("aria-pressed", String(o===b)) });
+      document.getElementById("conferir").disabled=false;
+      document.getElementById("aviso").textContent="Pronto. Toque em Conferir.";
+    }});
+    var c=document.getElementById("conferir"); if(c) c.onclick=function(){
+      s.tent.push(s.sel); s.conf=true; if(s.sel===x.certo || s.tent.length>=MAXT) s.fim=true; delete cs.env; csave(); contaQ(n);
+    };
+    var d=document.getElementById("denovo"); if(d) d.onclick=function(){ s.conf=false; s.sel=null; csave(); contaQ(n) };
+    var g=document.getElementById("seguir"); if(g) g.onclick=function(){ location.replace(i<C.q.length-1 ? "#C"+C.q[i+1].n : "#CONTA") };
+    var porq=APP.querySelector(".porque, .fb");
+    if(conferido && porq) porq.scrollIntoView({block:"center"}); else window.scrollTo(0,0);
+  }
+
+  function mensagemConta(){
+    var linhas=["Myrela · "+C.titulo+" (regra de três)"], prim=0;
+    C.q.forEach(function(x){
+      var t=tq(x.n), s=cs.q[x.n];
+      linhas.push("", x.n+". "+t.nome.toUpperCase()+" — "+x.enun, x.alt.map(function(a,k){ return LETRAS[k]+") "+a }).join(" · "));
+      if(!s || !s.fim){ linhas.push("Não fez"); return }
+      var tt=s.tent, ok=tt[tt.length-1]===x.certo; if(ok && tt.length===1) prim++;
+      linhas.push("Ela marcou: "+tt[0]+(ok ? (tt.length===1?" ✓ de primeira":" · acertou na "+tt.length+"ª ("+tt.join(" → ")+")") : " · errou 3 vezes ("+tt.join(" → ")+")"));
+    });
+    linhas.push("", "Feitas: "+cfeitas()+" de "+C.q.length+" · de primeira: "+prim);
+    return linhas.join("\n");
+  }
+  function enviarConta(){
+    if(PREVIEW){ toast("Modo de teste: o envio só funciona no link normal da aluna."); return }
+    if(!navigator.onLine){ toast("Sem internet agora. Suas respostas estão guardadas. Quando a internet voltar, toque em Enviar."); return }
+    var url="https://wa.me/?text="+encodeURIComponent(mensagemConta());
+    cs.env=Date.now(); csave();
+    window.open(url,"_blank") || (location.href=url);
+    contaHome(); toast("Abrindo o WhatsApp. Escolha o professor e toque em enviar.");
+  }
+
   function instalar(){
     if(!deferredInstall) return;
     deferredInstall.prompt();
@@ -558,7 +668,8 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   // As questões da semana saíram do app (pedido da Lucia, 30/10). Ficam o treino e a leitura.
   function rota(){ var h=location.hash.slice(1);
     if(h==="TREINO") treinoHome(); else if(/^T\d+$/.test(h)) treinoQ(+h.slice(1));
-    else if(h==="LEITURA") leituraHome(); else if(/^L\d+$/.test(h)) leituraQ(+h.slice(1));
+    else if(h==="LEITURA") leituraHome();
+    else if(h==="CONTA") contaHome(); else if(/^C\d+$/.test(h)) contaQ(+h.slice(1)); else if(/^L\d+$/.test(h)) leituraQ(+h.slice(1));
     else inicio() }
   window.addEventListener("hashchange",rota);
   rota();
