@@ -401,11 +401,12 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   function mensagemTreino(){
     var linhas=["Myrela · "+T.titulo], prim=0;
     T.q.forEach(function(x){
-      var s=ts.q[x.n]; if(!s || !s.fim) { linhas.push(x.n+" — não fez"); return }
+      var s=ts.q[x.n]; if(!s || !s.fim) { linhas.push("", x.n+". "+x.nome.toUpperCase()+" — não fez"); return }
       var t=s.tent, ok=t[t.length-1].join("")===x.certo; if(ok && t.length===1) prim++;
-      linhas.push(x.n+" — "+t[0].join(", ")+(ok ? (t.length===1?" ✓ de primeira":" · acertou na "+t.length+"ª tentativa") : " · errou "+t.length+" vezes ("+t.map(function(a){return a.join("")}).join(" / ")+")"));
+      linhas.push("Ela marcou: "+t[0].join(", ")+(ok ? (t.length===1?" ✓ de primeira":" · acertou na "+t.length+"ª tentativa") : " · errou "+t.length+" vezes ("+t.map(function(a){return a.join("")}).join(" / ")+")"));
+      linhas.splice(linhas.length-1, 0, "", x.n+". "+x.nome.toUpperCase()+" — "+x.texto[x.texto.length-1], x.alt.map(function(a,k){ return LETRAS7[k]+") "+a }).join(" · "));
     });
-    linhas.push("Feitas: "+feitas()+" de 10 · de primeira: "+prim);
+    linhas.push("", "Feitas: "+feitas()+" de 10 · de primeira: "+prim);
     return linhas.join("\n");
   }
   function enviarTreino(){
