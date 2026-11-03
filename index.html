@@ -125,6 +125,7 @@ details.texto[open] summary{margin-bottom:10px}
 .exemplo{border-left:2px solid var(--line);padding-left:14px;margin:12px 0;font-size:15px}
 .exemplo p{margin:0 0 8px}
 .sim{color:var(--ok);font-weight:600}.nao{color:var(--accent);font-weight:600}
+.conto{font-family:var(--serif);font-size:23px;line-height:1.25;margin:34px 0 0}.conto b{font-weight:600}
 .nivel{margin:28px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 .tq .texto p:last-child{margin-bottom:0}
 mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,transparent 96%);color:#1B1A18;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:600}
@@ -308,7 +309,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
 
   function statusT(x){
     var s=ts.q[x.n];
-    if(!s || !s.tent.length) return {c:"", t:"A fazer"};
+    if(!s || !s.tent.length) return {c:"hoje", t:"Toque aqui"};
     if(!s.fim) return {c:"pend", t:"Tentando"};
     if(s.tent[s.tent.length-1].join("")===x.certo) return {c:"ok", t: s.tent.length===1?"De primeira":"Acertou na "+s.tent.length+"ª"};
     return {c:"atr", t:"Ver de novo"};
@@ -326,7 +327,8 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
       + '<p><b>Pergunta:</b> quanto ela pagaria por 10 caixas?</p>'
       + '<p>450 alunos? <span class="nao">Não.</span> 15 salas? <span class="nao">Não.</span> 12 lápis por caixa? <span class="nao">Não.</span><br>6 caixas por R$ 48,00? <span class="sim">Sim.</span> 10 caixas? <span class="sim">Sim.</span></p>'
       + '<p>Os três números: <b>6 caixas, R$ 48,00 e 10 caixas.</b></p></div></details>'
-      + '<p class="sub" style="margin-top:14px">Em cada questão, a pergunta vem <mark class="marca">marcada em amarelo</mark>. Escolha os <b>3 números que você usaria na conta</b> e toque em Conferir. Se errar, aparece uma explicação e você tenta de novo.</p>';
+      + '<p class="sub" style="margin-top:14px">Em cada questão, a pergunta vem <mark class="marca">marcada em amarelo</mark>. Escolha os <b>3 números que você usaria na conta</b> e toque em Conferir. Se errar, aparece uma explicação e você tenta de novo.</p>'
+      + '<p class="faixa on" style="background:var(--ok-soft);color:var(--ok)"><b>Você tem 3 tentativas</b> em cada questão. Na 3ª, o app mostra a resposta certa.</p>';
     var nv=0;
     T.q.forEach(function(x){
       if(x.nivel!==nv){ if(nv) html+='</ul>'; nv=x.nivel; html+='<p class="nivel">'+T.niveis[nv]+'</p><ul class="dias" style="margin-top:8px">' }
@@ -443,7 +445,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   function lfeitas(){ return L.q.filter(function(x){ return ls.q[x.n] && ls.q[x.n].fim }).length }
   function statusL(x){
     var s=ls.q[x.n];
-    if(!s || !s.tent.length) return {c:"", t:"A fazer"};
+    if(!s || !s.tent.length) return {c:"hoje", t:"Toque aqui"};
     if(!s.fim) return {c:"pend", t:"Tentando"};
     if(s.tent[s.tent.length-1]===x.certo) return {c:"ok", t: s.tent.length===1?"De primeira":"Acertou na "+s.tent.length+"ª"};
     return {c:"atr", t:"Ver de novo"};
@@ -452,9 +454,10 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   function leituraHome(){
     var html='<div class="topo"><button class="voltar" id="voltar">← Início</button></div>'
       + '<p class="eyebrow">Leitura · '+L.autor+'</p><h2>Comédias para se ler na escola</h2>'
-      + '<p class="sub">Primeiro leia a crônica <b>no livro</b>. Depois responda aqui. Se errar, aparece um <b>Pense melhor</b> com dicas, e você escolhe de novo.</p>';
+      + '<p class="sub">Primeiro leia a crônica <b>no livro</b>. Depois responda aqui. Se errar, aparece um <b>Pense melhor</b> com dicas, e você escolhe de novo.</p>'
+      + '<p class="faixa on" style="background:var(--ok-soft);color:var(--ok)"><b>Você tem 3 tentativas</b> em cada questão. Na 3ª, o app mostra a resposta certa.</p>';
     L.cronicas.forEach(function(c){
-      html+='<p class="nivel">'+esc(c)+'</p><ul class="dias" style="margin-top:8px">';
+      html+='<p class="conto">Leia o conto <b>“'+esc(c)+'”</b> e responda</p><ul class="dias" style="margin-top:8px">';
       L.q.filter(function(x){ return x.c===c }).forEach(function(x){
         var s=statusL(x);
         html+='<li><button class="dia" data-l="'+x.n+'"><span class="d">'+x.n+'</span><span class="info"><span class="meta">'+esc(x.enun)+'</span></span><span class="chip '+s.c+'">'+s.t+'</span></button></li>';
