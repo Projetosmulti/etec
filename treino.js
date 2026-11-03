@@ -2,7 +2,7 @@
 // Aqui as respostas ficam no app de propósito: a aluna recebe a explicação na hora.
 window.TREINO = {
  id: "T1",
- titulo: "Treino de interpretação",
+ titulo: "Treino de interpretação de regra de três",
  niveis: {1: "Nível 1 · Fácil", 2: "Nível 2 · Médio", 3: "Nível 3 · Difícil"},
  q: [
   {n:1, nivel:1, nome:"Papelaria",

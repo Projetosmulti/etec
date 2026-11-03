@@ -1,7 +1,7 @@
 // Treino da conta (passo C): mesmas situações do treino de interpretação.
 window.CONTA = {
  "id": "C1",
- "titulo": "Treino da conta",
+ "titulo": "Treino da conta da regra de três",
  "q": [
   {
    "n": 1,

@@ -566,7 +566,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   function contaHome(){
     var html='<div class="topo"><button class="voltar" id="voltar">← Início</button></div>'
       + '<p class="eyebrow">Matemática · regra de três</p><h2>'+C.titulo+'</h2>'
-      + '<p class="sub">São as mesmas 10 situações do Treino de interpretação. Agora chegou o <b>C</b> do PDC: a <b>Conta</b>. Faça a conta no caderno e escolha o resultado.</p>'
+      + '<p class="sub">São as mesmas 10 situações do Treino de interpretação de regra de três. Agora chegou o <b>C</b> do PDC: a <b>Conta</b>. Faça a conta no caderno e escolha o resultado.</p>'
       + '<div class="pdc"><div><b class="big">1</b><span>Descubra quanto vale <b>1</b>: divida.</span></div><div><b class="big">2</b><span>Multiplique pela <b>quantidade nova</b> da pergunta.</span></div></div>'
       + '<p class="faixa on" style="background:var(--ok-soft);color:var(--ok)"><b>Você tem 3 tentativas</b> em cada questão. Na 3ª, o app mostra a resposta certa.</p><ul class="dias" style="margin-top:20px">';
     C.q.forEach(function(x){
@@ -634,7 +634,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   }
 
   function mensagemConta(){
-    var linhas=["Myrela · "+C.titulo+" (regra de três)"], prim=0;
+    var linhas=["Myrela · "+C.titulo], prim=0;
     C.q.forEach(function(x){
       var t=tq(x.n), s=cs.q[x.n];
       linhas.push("", x.n+". "+t.nome.toUpperCase()+" — "+x.enun, x.alt.map(function(a,k){ return LETRAS[k]+") "+a }).join(" · "));
