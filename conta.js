@@ -1,4 +1,4 @@
-// Treino da conta (passo C): mesmas situações do treino de interpretação.
+// Treino da conta (passo C) pelo método X: mesmas situações do treino de interpretação.
 window.CONTA = {
  "id": "C1",
  "titulo": "Treino da conta da regra de três",
@@ -16,13 +16,22 @@ window.CONTA = {
    ],
    "certo": "B",
    "por": {
-    "A": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo.",
-    "C": "Você fez 28 × 7. Mas R$ 28 é o preço de 4 cadernos, não de 1. Quanto custa 1 caderno?",
-    "D": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo.",
-    "E": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também."
+    "A": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 7 × 28. Depois divida por 4.",
+    "C": "Você multiplicou cruzado e achou 196. Muito bem! Mas parou no meio: falta o último passo, dividir por 4, o número que está no traço do x.",
+    "D": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 7 × 28. Depois divida por 4.",
+    "E": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 7 × 28. Depois divida por 4, o número que está no traço do x."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "1 caderno = 28 ÷ 4 = R$ 7,00. Então 7 cadernos = 7 × 7 = R$ 49,00."
+   "pense": "Monte o X: em cima 4 e 28, embaixo 7 e o x. Multiplique cruzado: 7 × 28. Depois divida o resultado por 4.",
+   "resumo": "Multiplicando cruzado: 4 · x = 7 × 28 = 196. Dividindo: x = 196 ÷ 4 = 49,00. Resposta: R$ 49,00.",
+   "x": {
+    "cab": [
+     "Cadernos",
+     "Preço (R$)"
+    ],
+    "a": "4",
+    "b": "28",
+    "c": "7"
+   }
   },
   {
    "n": 2,
@@ -37,13 +46,22 @@ window.CONTA = {
    ],
    "certo": "D",
    "por": {
-    "A": "150 pães não é o dobro de 50. Quantas vezes 50 cabe em 150?",
-    "B": "Você fez 2 × 150. Mas 2 kg servem para 50 pães, não para 1.",
-    "C": "Você descobriu que 150 é 3 vezes 50. Ótimo! Agora falta multiplicar os 2 kg por 3.",
-    "E": "Você fez 150 − 50. Isso dá pães, não farinha."
+    "A": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 150 × 2. Depois divida por 50.",
+    "B": "Você multiplicou cruzado e achou 300. Muito bem! Mas parou no meio: falta o último passo, dividir por 50, o número que está no traço do x.",
+    "C": "Você dividiu 150 por 50, mas esqueceu a farinha. No X, primeiro multiplique cruzado: 150 × 2. Depois divida por 50.",
+    "E": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 150 × 2. Depois divida por 50."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "150 ÷ 50 = 3, ou seja, 3 vezes mais pães. Então 3 × 2 kg = 6 kg."
+   "pense": "Monte o X: em cima 50 e 2, embaixo 150 e o x. Multiplique cruzado: 150 × 2. Depois divida o resultado por 50.",
+   "resumo": "Multiplicando cruzado: 50 · x = 150 × 2 = 300. Dividindo: x = 300 ÷ 50 = 6. Resposta: 6 kg.",
+   "x": {
+    "cab": [
+     "Pães",
+     "Farinha (kg)"
+    ],
+    "a": "50",
+    "b": "2",
+    "c": "150"
+   }
   },
   {
    "n": 3,
@@ -58,13 +76,22 @@ window.CONTA = {
    ],
    "certo": "A",
    "por": {
-    "B": "Você fez 120 × 7. Mas 120 livros são de 4 horas, não de 1 hora.",
-    "C": "Você multiplicou por 4. Era para dividir: quantos livros em 1 hora?",
-    "D": "1.500 é o total da biblioteca. Lembra do treino? Esse número não serve!",
-    "E": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo."
+    "B": "Você multiplicou cruzado e achou 840. Muito bem! Mas parou no meio: falta o último passo, dividir por 4, o número que está no traço do x.",
+    "C": "Você fez 120 × 4, dois números da mesma linha. No X a multiplicação é CRUZADA: 7 × 120. Depois divida por 4.",
+    "D": "1.500 é o total da biblioteca. Esse número não entra na conta! Monte o X só com os 3 números do treino: 4, 120 e 7.",
+    "E": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 7 × 120. Depois divida por 4."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "Em 1 hora: 120 ÷ 4 = 30 livros. Em 7 horas: 30 × 7 = 210 livros."
+   "pense": "Monte o X: em cima 4 e 120, embaixo 7 e o x. Multiplique cruzado: 7 × 120. Depois divida o resultado por 4.",
+   "resumo": "Multiplicando cruzado: 4 · x = 7 × 120 = 840. Dividindo: x = 840 ÷ 4 = 210. Resposta: 210 livros.",
+   "x": {
+    "cab": [
+     "Horas",
+     "Livros"
+    ],
+    "a": "4",
+    "b": "120",
+    "c": "7"
+   }
   },
   {
    "n": 4,
@@ -79,13 +106,22 @@ window.CONTA = {
    ],
    "certo": "E",
    "por": {
-    "A": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo.",
-    "B": "Você fez 1.200 × 70. Mas R$ 1.200 é o preço de 40 pessoas juntas. Quanto paga 1 pessoa?",
-    "C": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também.",
-    "D": "Você usou os 600 alunos da escola. Lembra do treino? Esse número não serve!"
+    "A": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 70 × 1.200. Depois divida por 40.",
+    "B": "Você multiplicou cruzado e achou 84.000. Muito bem! Mas parou no meio: falta o último passo, dividir por 40, o número que está no traço do x.",
+    "C": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 70 × 1.200. Depois divida por 40, o número que está no traço do x.",
+    "D": "Você usou os 600 alunos da escola. Esse número não entra na conta! Monte o X só com os 3 números do treino: 40, 1.200 e 70."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "Cada pessoa: 1.200 ÷ 40 = R$ 30. Para 70 pessoas: 30 × 70 = R$ 2.100."
+   "pense": "Monte o X: em cima 40 e 1.200, embaixo 70 e o x. Multiplique cruzado: 70 × 1.200. Depois divida o resultado por 40.",
+   "resumo": "Multiplicando cruzado: 40 · x = 70 × 1.200 = 84.000. Dividindo: x = 84.000 ÷ 40 = 2.100. Resposta: R$ 2.100.",
+   "x": {
+    "cab": [
+     "Estudantes",
+     "Preço (R$)"
+    ],
+    "a": "40",
+    "b": "1.200",
+    "c": "70"
+   }
   },
   {
    "n": 5,
@@ -100,13 +136,22 @@ window.CONTA = {
    ],
    "certo": "C",
    "por": {
-    "A": "Você fez 240 × 6. Mas 240 camisetas são de 4 horas, não de 1.",
-    "B": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo.",
-    "D": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também.",
-    "E": "Você usou as 8 horas do dia de trabalho. A máquina fez 240 camisetas em 4 horas!"
+    "A": "Você multiplicou cruzado e achou 1.440. Muito bem! Mas parou no meio: falta o último passo, dividir por 4, o número que está no traço do x.",
+    "B": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 6 × 240. Depois divida por 4.",
+    "D": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 6 × 240. Depois divida por 4, o número que está no traço do x.",
+    "E": "Você usou as 8 horas do dia de trabalho. A máquina fez 240 camisetas em 4 horas! Monte o X só com os 3 números do treino: 4, 240 e 6."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "Em 1 hora: 240 ÷ 4 = 60 camisetas. Em 6 horas: 60 × 6 = 360 camisetas."
+   "pense": "Monte o X: em cima 4 e 240, embaixo 6 e o x. Multiplique cruzado: 6 × 240. Depois divida o resultado por 4.",
+   "resumo": "Multiplicando cruzado: 4 · x = 6 × 240 = 1.440. Dividindo: x = 1.440 ÷ 4 = 360. Resposta: 360 camisetas.",
+   "x": {
+    "cab": [
+     "Horas",
+     "Camisetas"
+    ],
+    "a": "4",
+    "b": "240",
+    "c": "6"
+   }
   },
   {
    "n": 6,
@@ -121,13 +166,22 @@ window.CONTA = {
    ],
    "certo": "E",
    "por": {
-    "A": "Você usou os 350 km da viagem inteira. A pergunta pede 300 km!",
-    "B": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também.",
-    "C": "Você fez 15 × 300. Mas 15 litros servem para 180 km, não para 1 km.",
-    "D": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo."
+    "A": "Você usou os 350 km da viagem inteira. A pergunta pede 300 km! Monte o X só com os 3 números do treino: 180, 15 e 300.",
+    "B": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 300 × 15. Depois divida por 180, o número que está no traço do x.",
+    "C": "Você multiplicou cruzado e achou 4.500. Muito bem! Mas parou no meio: falta o último passo, dividir por 180, o número que está no traço do x.",
+    "D": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 300 × 15. Depois divida por 180."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "Com 1 litro o carro anda 180 ÷ 15 = 12 km. Para 300 km: 300 ÷ 12 = 25 litros."
+   "pense": "Monte o X: em cima 180 e 15, embaixo 300 e o x. Multiplique cruzado: 300 × 15. Depois divida o resultado por 180.",
+   "resumo": "Multiplicando cruzado: 180 · x = 300 × 15 = 4.500. Dividindo: x = 4.500 ÷ 180 = 25. Resposta: 25 litros.",
+   "x": {
+    "cab": [
+     "Km",
+     "Litros"
+    ],
+    "a": "180",
+    "b": "15",
+    "c": "300"
+   }
   },
   {
    "n": 7,
@@ -142,13 +196,22 @@ window.CONTA = {
    ],
    "certo": "A",
    "por": {
-    "B": "1.400 não é o dobro de 600. Descubra quantos folhetos ela faz em 1 hora.",
-    "C": "Você fez 1.400 × 3. Mas em 3 horas ela faz 600 folhetos. Quantos em 1 hora?",
-    "D": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também.",
-    "E": "Você usou os 2.000 folhetos do primeiro pedido. A pergunta é sobre 1.400!"
+    "B": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 1.400 × 3. Depois divida por 600.",
+    "C": "Você multiplicou cruzado e achou 4.200. Muito bem! Mas parou no meio: falta o último passo, dividir por 600, o número que está no traço do x.",
+    "D": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 1.400 × 3. Depois divida por 600, o número que está no traço do x.",
+    "E": "Você usou os 2.000 folhetos do primeiro pedido. A pergunta é sobre 1.400! Monte o X só com os 3 números do treino: 600, 3 e 1.400."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "Em 1 hora: 600 ÷ 3 = 200 folhetos. Para 1.400: 1.400 ÷ 200 = 7 horas."
+   "pense": "Monte o X: em cima 600 e 3, embaixo 1.400 e o x. Multiplique cruzado: 1.400 × 3. Depois divida o resultado por 600.",
+   "resumo": "Multiplicando cruzado: 600 · x = 1.400 × 3 = 4.200. Dividindo: x = 4.200 ÷ 600 = 7. Resposta: 7 horas.",
+   "x": {
+    "cab": [
+     "Folhetos",
+     "Horas"
+    ],
+    "a": "600",
+    "b": "3",
+    "c": "1.400"
+   }
   },
   {
    "n": 8,
@@ -163,13 +226,22 @@ window.CONTA = {
    ],
    "certo": "C",
    "por": {
-    "A": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo.",
-    "B": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também.",
-    "D": "Você dividiu 72 por 8. Primeiro descubra quantos m² 1 litro pinta.",
-    "E": "Você fez 8 × 72. Mas 8 litros pintam 32 m², não 1 m²."
+    "A": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 72 × 8. Depois divida por 32.",
+    "B": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 72 × 8. Depois divida por 32, o número que está no traço do x.",
+    "D": "Você dividiu 72 por 8. No X, primeiro multiplique cruzado: 72 × 8. Depois divida por 32.",
+    "E": "Você multiplicou cruzado e achou 576. Muito bem! Mas parou no meio: falta o último passo, dividir por 32, o número que está no traço do x."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "1 litro pinta 32 ÷ 8 = 4 m². Para 72 m²: 72 ÷ 4 = 18 litros."
+   "pense": "Monte o X: em cima 32 e 8, embaixo 72 e o x. Multiplique cruzado: 72 × 8. Depois divida o resultado por 32.",
+   "resumo": "Multiplicando cruzado: 32 · x = 72 × 8 = 576. Dividindo: x = 576 ÷ 32 = 18. Resposta: 18 litros.",
+   "x": {
+    "cab": [
+     "Parede (m²)",
+     "Tinta (litros)"
+    ],
+    "a": "32",
+    "b": "8",
+    "c": "72"
+   }
   },
   {
    "n": 9,
@@ -184,13 +256,22 @@ window.CONTA = {
    ],
    "certo": "B",
    "por": {
-    "A": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também.",
-    "C": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo.",
-    "D": "Você fez 720 × 25. Mas R$ 720 é o preço de 12 cestas. Quanto custa 1?",
-    "E": "Você usou os R$ 3.000 do primeiro mês. A pergunta é sobre a nova campanha!"
+    "A": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 25 × 720. Depois divida por 12, o número que está no traço do x.",
+    "C": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 25 × 720. Depois divida por 12.",
+    "D": "Você multiplicou cruzado e achou 18.000. Muito bem! Mas parou no meio: falta o último passo, dividir por 12, o número que está no traço do x.",
+    "E": "Você usou os R$ 3.000 do primeiro mês. A pergunta é sobre a nova campanha! Monte o X só com os 3 números do treino: 12, 720 e 25."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "1 cesta: 720 ÷ 12 = R$ 60. Para 25 cestas: 60 × 25 = R$ 1.500."
+   "pense": "Monte o X: em cima 12 e 720, embaixo 25 e o x. Multiplique cruzado: 25 × 720. Depois divida o resultado por 12.",
+   "resumo": "Multiplicando cruzado: 12 · x = 25 × 720 = 18.000. Dividindo: x = 18.000 ÷ 12 = 1.500. Resposta: R$ 1.500.",
+   "x": {
+    "cab": [
+     "Cestas",
+     "Preço (R$)"
+    ],
+    "a": "12",
+    "b": "720",
+    "c": "25"
+   }
   },
   {
    "n": 10,
@@ -205,13 +286,22 @@ window.CONTA = {
    ],
    "certo": "D",
    "por": {
-    "A": "Você usou as 8 horas das costureiras. A máquina do teste trabalhou 3 horas!",
-    "B": "A conta ficou de cabeça para baixo. Pense: se a quantidade nova é MAIOR, o resultado tem que ser maior também.",
-    "C": "Você fez 45 × 7. Mas 45 uniformes são de 3 horas, não de 1.",
-    "E": "Regra de três não é somar ou subtrair. As coisas crescem juntas, na mesma proporção: dobro com dobro, triplo com triplo."
+    "A": "Você usou as 8 horas das costureiras. A máquina do teste trabalhou 3 horas! Monte o X só com os 3 números do treino: 3, 45 e 7.",
+    "B": "Você multiplicou os números errados. A multiplicação cruzada segue o traço do X que NÃO tem o x: 7 × 45. Depois divida por 3, o número que está no traço do x.",
+    "C": "Você multiplicou cruzado e achou 315. Muito bem! Mas parou no meio: falta o último passo, dividir por 3, o número que está no traço do x.",
+    "E": "No método X não se soma nem se subtrai. Monte o X e multiplique cruzado: 7 × 45. Depois divida por 3."
    },
-   "pense": "Passo 1: descubra quanto vale 1 (divida). Passo 2: multiplique pela quantidade nova da pergunta.",
-   "resumo": "Em 1 hora: 45 ÷ 3 = 15 uniformes. Em 7 horas: 15 × 7 = 105 uniformes."
+   "pense": "Monte o X: em cima 3 e 45, embaixo 7 e o x. Multiplique cruzado: 7 × 45. Depois divida o resultado por 3.",
+   "resumo": "Multiplicando cruzado: 3 · x = 7 × 45 = 315. Dividindo: x = 315 ÷ 3 = 105. Resposta: 105 uniformes.",
+   "x": {
+    "cab": [
+     "Horas",
+     "Uniformes"
+    ],
+    "a": "3",
+    "b": "45",
+    "c": "7"
+   }
   }
  ]
 };

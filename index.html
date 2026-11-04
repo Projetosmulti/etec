@@ -129,6 +129,14 @@ details.texto[open] summary{margin-bottom:10px}
 .nivel{margin:28px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 .tq .texto p:last-child{margin-bottom:0}
 mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,transparent 96%);color:#1B1A18;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:600}
+.xm{max-width:300px;margin:12px auto 4px;text-align:center}
+.xm .cab,.xm .xv{display:grid;grid-template-columns:1fr 1fr}
+.xm .cab span{font-size:13px;color:var(--muted);padding-bottom:4px;border-bottom:1px solid var(--line)}
+.xm .xv{position:relative}
+.xm .xv span{position:relative;font-family:var(--serif);font-size:26px;padding:12px 0}
+.xm .xv span.inc{font-style:italic;color:var(--warn)}
+.xm svg{position:absolute;inset:0;width:100%;height:100%}
+.xm .eq{font-size:14px;margin-top:6px;color:var(--muted)}
 .tarefa{background:var(--bg);border-radius:12px;padding:14px 16px;margin-top:4px}
 .tarefa p{margin:4px 0 0}.tarefa .eyebrow{margin:0}
 .alt.multi .l{border-radius:7px}
@@ -433,7 +441,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
       + '<span class="meta">10 questões · '+(ft?ft+' de 10 feitas':'escolha os números certos')+'</span></span>'
       + '<span class="chip '+(ts.env?'ok':ft===10?'pend':'hoje')+'">'+(ts.env?'Enviado':ft===10?'Falta enviar':'Abrir')+'</span></button>'
       + '<button class="card-treino" style="margin-top:12px" data-ir="CONTA"><span class="info"><span class="eyebrow">Matemática · regra de três</span><br><span class="tit">'+C.titulo+'</span><br>'
-      + '<span class="meta">10 questões · '+(fc?fc+' de 10 feitas':'agora é fazer a conta')+'</span></span>'
+      + '<span class="meta">10 questões · '+(fc?fc+' de 10 feitas':'pelo método X')+'</span></span>'
       + '<span class="chip '+(cs.env?'ok':fc===10?'pend':'hoje')+'">'+(cs.env?'Enviado':fc===10?'Falta enviar':'Abrir')+'</span></button>';
     APP.innerHTML=html;
     APP.querySelectorAll(".card-treino").forEach(function(b){ b.onclick=function(){ location.hash=b.dataset.ir } });
@@ -563,11 +571,22 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     return {c:"atr", t:"Ver de novo"};
   }
 
+  function xmBox(m, eq){
+    return '<div class="xm"><div class="cab"><span>'+esc(m.cab[0])+'</span><span>'+esc(m.cab[1])+'</span></div>'
+      + '<div class="xv"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'
+      + '<line x1="30" y1="32" x2="70" y2="70" stroke="currentColor" stroke-opacity=".35" stroke-width="2" stroke-dasharray="4 3" vector-effect="non-scaling-stroke"/>'
+      + '<line x1="30" y1="70" x2="70" y2="32" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>'
+      + '<span>'+esc(m.a)+'</span><span>'+esc(m.b)+'</span><span>'+esc(m.c)+'</span><span class="inc">x</span></div>'
+      + (eq?'<p class="eq">'+eq+'</p>':'')+'</div>';
+  }
   function contaHome(){
     var html='<div class="topo"><button class="voltar" id="voltar">← Início</button></div>'
       + '<p class="eyebrow">Matemática · regra de três</p><h2>'+C.titulo+'</h2>'
-      + '<p class="sub">São as mesmas 10 situações do Treino de interpretação de regra de três. Agora chegou o <b>C</b> do PDC: a <b>Conta</b>. Faça a conta no caderno e escolha o resultado.</p>'
-      + '<div class="pdc"><div><b class="big">1</b><span>Descubra quanto vale <b>1</b>: divida.</span></div><div><b class="big">2</b><span>Multiplique pela <b>quantidade nova</b> da pergunta.</span></div></div>'
+      + '<p class="sub">São as mesmas 10 situações do Treino de interpretação de regra de três. Agora chegou o <b>C</b> do PDC: a <b>Conta</b>. Use o <b>método X</b>, faça a conta no caderno e escolha o resultado.</p>'
+      + '<div class="pdc"><div><b class="big">1</b><span><b>Monte o X.</b> Coisas iguais na mesma coluna (preço embaixo de preço, horas embaixo de horas). O <b>x</b> fica no lugar do que a pergunta quer.</span></div>'
+      + '<div><b class="big">2</b><span><b>Multiplique cruzado</b>, seguindo o traço cheio do X (no exemplo, 7 × 28).</span></div>'
+      + '<div><b class="big">3</b><span><b>Divida</b> pelo número que está no traço pontilhado, junto com o x (no exemplo, o 4).</span></div></div>'
+      + '<div class="tarefa"><p class="eyebrow">Exemplo: 4 cadernos custam R$ 28. Quanto custam 7?</p>'+xmBox({cab:["Cadernos","Preço (R$)"],a:"4",b:"28",c:"7"}, '4 · x = 7 × 28 = 196 &nbsp;→&nbsp; x = 196 ÷ 4 = <b>49</b>')+'</div>'
       + '<p class="faixa on" style="background:var(--ok-soft);color:var(--ok)"><b>Você tem 3 tentativas</b> em cada questão. Na 3ª, o app mostra a resposta certa.</p><ul class="dias" style="margin-top:20px">';
     C.q.forEach(function(x){
       var s=statusC(x), t=tq(x.n);
@@ -593,7 +612,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     var html='<div class="topo"><button class="voltar" id="voltar">← Conta</button><span class="navdias"><button id="ant" aria-label="Questão anterior"'+(i===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próxima questão"'+(i===C.q.length-1?' disabled':'')+'>›</button></span></div>'
       + '<p class="eyebrow">'+T.niveis[t.nivel]+'</p><h2>'+x.n+'. '+esc(t.nome)+'</h2>'
       + '<section class="q tq"><div class="texto">'+t.texto.map(function(p,k){ return '<p>'+(k===t.texto.length-1?'<mark class="marca">'+esc(p)+'</mark>':esc(p))+'</p>' }).join("")+'</div>'
-      + '<div class="tarefa"><p class="eyebrow">Os números que você achou no treino</p><p><b>'+esc(x.dados)+'</b></p><p>Agora faça a conta no caderno e escolha o resultado.</p></div><ul class="alts">';
+      + '<div class="tarefa"><p class="eyebrow">Os números que você achou no treino</p><p><b>'+esc(x.dados)+'</b></p><p>Monte o <b>X</b> no caderno, faça a conta e escolha o resultado.</p></div><ul class="alts">';
     x.alt.forEach(function(a,k){
       var Lt=LETRAS[k], on = s.sel===Lt, cls="";
       if(conferido && on) cls = Lt===x.certo ? " certa" : " errada";
@@ -605,9 +624,9 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     });
     html+='</ul>';
     if(conferido){
-      if(acertou) html+='<div class="fb ok"><p class="eyebrow">'+(s.tent.length===1?'Acertou de primeira':'Agora sim')+'</p><p class="grande">Isso!</p><p>'+esc(x.resumo)+'</p></div>';
-      else if(revelou) html+='<div class="fb dica"><p class="eyebrow">A resposta certa é '+x.certo+'</p><p>'+esc(x.resumo)+'</p></div>';
-      else html+='<div class="fb dica"><p class="eyebrow">Dica</p><p>'+esc(x.pense)+'</p></div>';
+      if(acertou) html+='<div class="fb ok"><p class="eyebrow">'+(s.tent.length===1?'Acertou de primeira':'Agora sim')+'</p><p class="grande">Isso!</p>'+xmBox(x.x)+'<p>'+esc(x.resumo)+'</p></div>';
+      else if(revelou) html+='<div class="fb dica"><p class="eyebrow">A resposta certa é '+x.certo+'</p>'+xmBox(x.x)+'<p>'+esc(x.resumo)+'</p></div>';
+      else html+='<div class="fb dica"><p class="eyebrow">Dica · método X</p>'+xmBox(x.x)+'<p>'+esc(x.pense)+'</p></div>';
     }
     html+='</section><div style="height:24px"></div><div class="barra"><div class="in">';
     if(!conferido) html+='<p class="aviso" id="aviso">'+(s.sel?'Pronto. Toque em Conferir.':'Escolha uma alternativa')+'</p><button class="btn" id="conferir"'+(s.sel?'':' disabled')+'>Conferir</button>';
