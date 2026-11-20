@@ -19,7 +19,7 @@ window.LEITURA = {
   "O Marajá",
   "Suflê de chuchu",
   "Direitos humanos",
-  "Defenestração",
+  "A novata",
   "Da timidez"
  ],
  "q": [
@@ -970,66 +970,66 @@ window.LEITURA = {
   },
   {
    "n": 46,
-   "c": "Defenestração",
-   "enun": "No começo, o autor diz que \"certas palavras têm o significado errado\" e inventa sentidos para \"falácia\", \"hermeneuta\" e \"plúmbeo\". O que ele está fazendo?",
+   "c": "A novata",
+   "enun": "O editor fala em \"linha de frente do jornalismo moderno\", em \"coragem\" e em \"estômago\". Ao longo do conto, o leitor descobre que o trabalho delas é:",
    "alt": [
-    "imaginando o significado das palavras pelo som delas, brincando com a língua.",
-    "usando palavras estrangeiras sem traduzir.",
-    "contando a origem verdadeira das palavras.",
-    "consultando o dicionário para ensinar o significado certo.",
-    "criticando quem fala difícil."
+    "entrevistar uma celebridade com perguntas bobas sobre a vida pessoal dela (perfume, cueca, cor favorita).",
+    "fazer uma reportagem sobre política.",
+    "cobrir uma guerra em outro país.",
+    "investigar um crime perigoso para a crônica policial.",
+    "escrever críticas de livros para o suplemento cultural."
    ],
    "certo": "A",
    "por": {
-    "B": "São palavras do português, ainda que difíceis.",
-    "C": "Ele inventa (\"devia ser\"). Não conta a origem verdadeira.",
-    "D": "Ele só abre o dicionário bem depois, e só para \"defenestração\".",
-    "E": "Ele critica alguém? Ele se diverte inventando."
+    "B": "Alguém pergunta sobre governo ou eleição? Releia as perguntas.",
+    "C": "\"Linha de frente\" é só um jeito de falar. Para onde elas vão? Para o apartamento do Rudi.",
+    "D": "A crônica policial é para onde vai quem desiste. Que perguntas elas fazem ao Rudi?",
+    "E": "A Dalva até debocha: \"Você acha que está respondendo para o suplemento cultural?\""
    },
-   "pense": "Repare na expressão que se repete: \"devia ser\". Ele está dizendo o que a palavra é ou o que ela parece ser?",
-   "resumo": "Ele se diverte imaginando sentidos pelo som: \"falácia\" parece planta, \"plúmbeo\" parece barulho de algo caindo na água. É uma brincadeira com a língua."
+   "pense": "Que perguntas a Dalva faz ao Rudi? São sobre um assunto sério ou sobre a vida pessoal dele?",
+   "resumo": "Parecia uma missão perigosa, mas era uma entrevista sobre coisas bobas: perfume, cueca, pasta de dente. O humor vem desse contraste."
   },
   {
    "n": 47,
-   "c": "Defenestração",
-   "enun": "Um homem cai na calçada e diz: \"Fui defenestrado...\". Alguém comenta: \"Coitado. E depois ainda atiraram ele pela janela!\". O humor dessa fala vem de que:",
+   "c": "A novata",
+   "enun": "No apartamento do Rudi, a Dalva empurra a porta, manda ele ficar \"Quieto!\" e diz: \"tudo que você disser pode ser usado na edição de domingo\". A cena imita:",
    "alt": [
-    "o homem estava mentindo e não tinha caído.",
-    "quem comenta conhece bem a palavra e está fazendo uma piada.",
-    "\"defenestrado\" é um palavrão.",
-    "quem comenta não sabe que \"defenestrado\" quer dizer justamente \"atirado pela janela\" e acha que foram duas coisas diferentes.",
-    "o homem tinha caído da escada."
+    "uma festa de aniversário.",
+    "uma aula na escola.",
+    "uma consulta médica.",
+    "um interrogatório policial, como nos filmes.",
+    "uma visita de amigos."
    ],
    "certo": "D",
    "por": {
-    "A": "Ele \"acaba de cair na calçada\". Caiu de verdade.",
-    "B": "Se soubesse o sentido, diria \"e depois ainda\"? Ele trata como duas coisas.",
-    "C": "É uma palavra do dicionário, explicada no próprio texto.",
-    "E": "Ele está na calçada e aponta para cima. De onde ele caiu?"
+    "A": "O Rudi fica assustado e até chora. Isso é festa?",
+    "B": "Tem professor e alunos? Repare em \"Quieto!\" e \"Prepare-se para falar\".",
+    "C": "Ela pergunta sobre saúde? De onde vem a frase \"tudo que você disser pode ser usado...\"?",
+    "E": "Amigo empurra a porta e manda ficar quieto?"
    },
-   "pense": "O que o dicionário diz que é \"defenestração\"? Agora releia: \"Fui defenestrado\" e \"E depois ainda atiraram ele pela janela!\".",
-   "resumo": "Quem comenta acha que \"defenestrado\" é uma coisa e \"atirado pela janela\" é outra, mas é a mesma! A graça está em quem não conhece o sentido da palavra."
+   "pense": "Em que tipo de filme se ouve \"tudo o que você disser pode ser usado contra você\"?",
+   "resumo": "Porta empurrada, \"Quieto!\" e uma frase de filme policial: a entrevista é contada como se fosse um interrogatório. Por isso é engraçado."
   },
   {
    "n": 48,
-   "c": "Defenestração",
-   "enun": "Na última frase, o autor sente \"uma estranha compulsão de arrancar o papel da máquina, amassá-lo e defenestrar esta crônica\". Com esse final, ele:",
+   "c": "A novata",
+   "enun": "No final, a novata continua sozinha: \"Não pense que acabou ainda, Rudi. Sabonete!\". Isso mostra que a Sandrinha:",
    "alt": [
-    "pede desculpas por ter escrito uma crônica ruim.",
-    "explica pela primeira vez o significado da palavra.",
-    "brinca que também tem vontade de \"defenestrar\", ou seja, jogar pela janela, a própria crônica.",
-    "avisa que a crônica não vai ser publicada.",
-    "confessa que já atirou uma pessoa pela janela."
+    "desistiu do emprego.",
+    "estava com medo da Dalva.",
+    "aprendeu rápido o jeito duro da Dalva e entrou de vez no jogo.",
+    "ficou com pena do Rudi e quis parar.",
+    "queria vender um sabonete para o Rudi."
    ],
    "certo": "C",
    "por": {
-    "A": "Ele não pede desculpas. Ele brinca com a palavra que explicou.",
-    "B": "O significado já tinha aparecido no meio do texto, no dicionário (o Aurelião).",
-    "D": "Se não fosse publicada, como estaria no livro? \"Se ela sair, é porque resisti.\"",
-    "E": "O que ele quer jogar pela janela é o papel, a crônica."
+    "A": "A Dalva diz \"Você é boa, novata\". Ela desistiu?",
+    "B": "Ela faz perguntas sozinha, sem a Dalva pedir. Isso é medo?",
+    "D": "Quem quer parar diz \"Não pense que acabou ainda\"?",
+    "E": "\"Sabonete!\" é mais uma pergunta: qual sabonete ele usa."
    },
-   "pense": "O que ele diz que tem vontade de jogar pela janela? Antes disso, ele tinha dito que todo mundo esconde essa vontade.",
-   "resumo": "Depois de dizer que todo mundo tem uma vontade escondida de defenestrar, ele confessa a dele: atirar a própria crônica pela janela. O texto termina falando de si mesmo (metalinguagem)."
+   "pense": "No começo ela era a novata insegura. No fim, quem está fazendo as perguntas?",
+   "resumo": "A novata, que chegou insegura, termina mais insistente que a veterana. Ela passou no teste do editor."
   },
   {
    "n": 49,
