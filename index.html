@@ -152,6 +152,16 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
 .fb p{margin:6px 0 0}
 .fb .grande{font-family:var(--serif);font-size:22px;margin-top:2px}
 .rod{margin-top:36px;font-size:12px;color:var(--ink-3)}
+/* prova etec */
+.pq .enun-intro{font-size:14px;color:var(--ink-2);background:var(--bg);border-radius:8px;padding:8px 12px;text-align:center}
+.pq p{margin:0 0 10px}
+.pq figure{margin:10px 0 4px;text-align:center}
+.pq img{width:100%;height:auto;border-radius:6px;background:#fff}
+.pq figcaption{font-size:12px;color:var(--ink-3);margin-top:4px}
+.pq .fonte-q{font-size:11.5px;color:var(--ink-3);margin:2px 0 12px;word-break:break-all}
+.pq .caixa,.pq .poema-q{border:1px solid var(--line);border-radius:12px;padding:14px 16px 4px;margin:6px 0 14px;background:var(--bg)}
+.pq .poema-q{font-family:var(--serif);font-size:16.5px;line-height:1.5;max-width:340px;margin-left:auto;margin-right:auto}
+.pq .poema-q .fonte-q{font-family:var(--sans)}
 </style>
 </head>
 <body>
@@ -160,6 +170,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
 <script src="treino.js"></script>
 <script src="leitura.js"></script>
 <script src="conta.js"></script>
+<script src="prova.js"></script>
 <script>
 (function(){
   "use strict";
@@ -429,12 +440,15 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
 
   // ---------- Início: os dois treinos ----------
   function inicio(){
-    var fl=lfeitas(), ft=feitas(), fc=cfeitas();
+    var fl=lfeitas(), ft=feitas(), fc=cfeitas(), fp=pfeitas();
     var html='<p class="eyebrow">Myrela · Vestibulinho Etec</p><h1>Treinos</h1>'
-      + '<p class="sub">Escolha um treino. Se errar, o app explica na hora e você tenta de novo.</p>'
+      + '<p class="sub">Escolha um treino. Nos treinos, se errar, o app explica na hora. Na Prova Etec, não: é como no dia da prova.</p>'
       + (PREVIEW?'<div class="faixa on">Modo de teste: nada daqui vai para o app da aluna.</div>':'')
       + '<div class="instalar'+(deferredInstall?' on':'')+'" id="inst"><button class="btn sec" id="btnInst">Instalar o app no celular</button></div>'
-      + '<button class="card-treino" data-ir="LEITURA"><span class="info"><span class="eyebrow">Leitura · Verissimo</span><br><span class="tit">Comédias para se ler na escola</span><br>'
+      + '<button class="card-treino" data-ir="PROVA"><span class="info"><span class="eyebrow">Simulado · como na prova</span><br><span class="tit">'+P.titulo+'</span><br>'
+      + '<span class="meta">'+P.q.length+' questões · '+(fp?fp+' de '+P.q.length+' respondidas':'responda e envie para o professor')+'</span></span>'
+      + '<span class="chip '+(ps.env?'ok':fp===P.q.length?'pend':'hoje')+'">'+(ps.env?'Enviado':fp===P.q.length?'Falta enviar':'Abrir')+'</span></button>'
+      + '<button class="card-treino" style="margin-top:12px" data-ir="LEITURA"><span class="info"><span class="eyebrow">Leitura · Verissimo</span><br><span class="tit">Comédias para se ler na escola</span><br>'
       + '<span class="meta">'+L.cronicas.length+' contos · '+L.q.length+' questões · '+(fl?fl+' de '+L.q.length+' feitas':'leia no livro e responda aqui')+'</span></span>'
       + '<span class="chip '+(ls.env?'ok':fl===L.q.length?'pend':'hoje')+'">'+(ls.env?'Enviado':fl===L.q.length?'Falta enviar':'Abrir')+'</span></button>'
       + '<button class="card-treino" style="margin-top:12px" data-ir="TREINO"><span class="info"><span class="eyebrow">Matemática · sem fazer contas</span><br><span class="tit">'+T.titulo+'</span><br>'
@@ -447,6 +461,71 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     APP.querySelectorAll(".card-treino").forEach(function(b){ b.onclick=function(){ location.hash=b.dataset.ir } });
     var bi=document.getElementById("btnInst"); if(bi) bi.onclick=instalar;
     window.scrollTo(0,0);
+  }
+
+  // ---------- Prova Etec: questões da prova, sem dicas e sem mostrar acerto (gabarito só com a Lucia) ----------
+  var P = window.PROVA, PKEY = "etec-prova-" + P.id + (PREVIEW ? "-teste" : "");
+  var ps = (function(){ try{ return JSON.parse(localStorage.getItem(PKEY)) || {} }catch(e){ return {} } })(); ps.r = ps.r || {};
+  function psave(){ try{ localStorage.setItem(PKEY, JSON.stringify(ps)) }catch(e){} }
+  function pfeitas(){ return P.q.filter(function(x){ return ps.r[x.n] }).length }
+  function dois(n){ return (n<10?"0":"")+n }
+  function provaHome(){
+    var html='<div class="topo"><button class="voltar" id="voltar">← Início</button></div>'
+      + '<p class="eyebrow">Simulado</p><h2>'+P.titulo+'</h2>'
+      + '<p class="sub">Questões de uma prova da Etec, iguais às da prova. Leia com calma e escolha uma alternativa em cada questão. O app <b>não mostra</b> se você acertou: no fim, toque em <b>Enviar para o professor</b>.</p>'
+      + '<ul class="dias">';
+    P.q.forEach(function(x){
+      var r=ps.r[x.n];
+      html+='<li><button class="dia" data-p="'+x.n+'"><span class="d">'+dois(x.n)+'</span><span class="info"><span class="nome">Questão '+dois(x.n)+'</span><br><span class="meta">'+esc(x.area)+'</span></span><span class="chip '+(r?'ok':'hoje')+'">'+(r?'Respondida ('+r+')':'Responder')+'</span></button></li>';
+    });
+    var f=pfeitas();
+    html+='</ul><div style="height:24px"></div><div class="barra"><div class="in"><p class="aviso">'+(ps.env?'Enviado em '+new Date(ps.env).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):f+' de '+P.q.length+' respondidas')+'</p>'
+      + '<button class="btn" id="penviar"'+(f?'':' disabled')+'>'+(ps.env?'Enviar de novo':'Enviar para o professor')+'</button></div></div>';
+    if(PREVIEW) html+='<button class="btn sec" id="plimpar">Apagar respostas de teste da prova</button>';
+    APP.innerHTML=html;
+    document.getElementById("voltar").onclick=function(){ location.replace("#") };
+    APP.querySelectorAll(".dia").forEach(function(b){ b.onclick=function(){ location.hash="P"+b.dataset.p } });
+    document.getElementById("penviar").onclick=enviarProva;
+    var pl=document.getElementById("plimpar"); if(pl) pl.onclick=function(){ ps={r:{}}; psave(); provaHome(); toast("Respostas de teste da prova apagadas.") };
+    window.scrollTo(0,0);
+  }
+  function provaQ(n){
+    var x=P.q.filter(function(y){ return y.n===n })[0]; if(!x){ location.replace("#PROVA"); return }
+    var i=P.q.indexOf(x), r=ps.r[n];
+    var html='<div class="topo"><button class="voltar" id="voltar">← Prova</button><span class="navdias"><button id="ant" aria-label="Questão anterior"'+(i===0?' disabled':'')+'>‹</button><button id="prox" aria-label="Próxima questão"'+(i===P.q.length-1?' disabled':'')+'>›</button></span></div>'
+      + '<p class="eyebrow">'+esc(x.area)+' · '+(i+1)+' de '+P.q.length+'</p><h2>Questão '+dois(x.n)+'</h2>'
+      + '<section class="q pq">'+(x.texto?P.textos[x.texto]:'')+x.enun+'<ul class="alts">';
+    x.alt.forEach(function(a,k){ var Lt=LETRAS[k];
+      html+='<li><button class="alt" data-l="'+Lt+'" aria-pressed="'+(r===Lt)+'"><span class="l">'+Lt+'</span><span class="t">'+esc(a)+'</span></button></li>' });
+    html+='</ul></section><div style="height:24px"></div><div class="barra"><div class="in"><p class="aviso" id="aviso">'+(r?'Resposta guardada: '+r+'. Pode trocar se quiser.':'Escolha uma alternativa')+'</p>'
+      + '<button class="btn" id="seguir"'+(r?'':' disabled')+'>'+(i<P.q.length-1?'Próxima questão':'Terminar e enviar')+'</button></div></div>';
+    APP.innerHTML=html;
+    document.getElementById("voltar").onclick=function(){ location.replace("#PROVA") };
+    document.getElementById("ant").onclick=function(){ if(i>0) location.replace("#P"+P.q[i-1].n) };
+    document.getElementById("prox").onclick=function(){ if(i<P.q.length-1) location.replace("#P"+P.q[i+1].n) };
+    APP.querySelectorAll(".alt").forEach(function(b){ b.onclick=function(){
+      ps.r[n]=b.dataset.l; delete ps.env; psave();
+      APP.querySelectorAll(".alt").forEach(function(o){ o.setAttribute("aria-pressed", String(o===b)) });
+      document.getElementById("seguir").disabled=false;
+      document.getElementById("aviso").textContent="Resposta guardada: "+b.dataset.l+". Pode trocar se quiser.";
+    }});
+    document.getElementById("seguir").onclick=function(){ location.replace(i<P.q.length-1 ? "#P"+P.q[i+1].n : "#PROVA") };
+    window.scrollTo(0,0);
+  }
+  function mensagemProva(){
+    var linhas=["Myrela · "+P.titulo];
+    P.q.forEach(function(x){ var r=ps.r[x.n];
+      linhas.push("Questão "+dois(x.n)+": "+(r ? r+") "+x.alt[LETRAS.indexOf(r)] : "não respondeu")) });
+    linhas.push("Respondidas: "+pfeitas()+" de "+P.q.length);
+    return linhas.join("\n");
+  }
+  function enviarProva(){
+    if(PREVIEW){ toast("Modo de teste: o envio só funciona no link normal da aluna."); return }
+    if(!navigator.onLine){ toast("Sem internet agora. Suas respostas estão guardadas. Quando a internet voltar, toque em Enviar."); return }
+    var url="https://wa.me/?text="+encodeURIComponent(mensagemProva());
+    ps.env=Date.now(); psave();
+    window.open(url,"_blank") || (location.href=url);
+    provaHome(); toast("Abrindo o WhatsApp. Escolha o professor e toque em enviar.");
   }
 
   // ---------- Leitura: crônicas do Verissimo (o texto fica no livro) ----------
@@ -473,7 +552,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
       html+='<p class="conto">Leia o conto <b>“'+esc(c)+'”</b> e responda</p><ul class="dias" style="margin-top:8px">';
       L.q.filter(function(x){ return x.c===c }).forEach(function(x){
         var s=statusL(x);
-        html+='<li><button class="dia" data-l="'+x.n+'"><span class="d">'+x.n+'</span><span class="info"><span class="meta">'+esc(x.enun)+'</span></span><span class="chip '+s.c+'">'+s.t+'</span></button></li>';
+        html+='<li><button class="dia" data-l="'+x.n+'"><span class="d">'+(L.q.indexOf(x)+1)+'</span><span class="info"><span class="meta">'+esc(x.enun)+'</span></span><span class="chip '+s.c+'">'+s.t+'</span></button></li>';
       });
       html+='</ul>';
     });
@@ -540,9 +619,9 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
     var linhas=["Myrela · Leitura: Comédias para se ler na escola"], prim=0, cr="";
     L.q.forEach(function(x){
       if(x.c!==cr){ cr=x.c; linhas.push("— "+cr) }
-      var s=ls.q[x.n]; if(!s || !s.fim){ linhas.push(x.n+") não fez"); return }
+      var k=L.q.indexOf(x)+1, s=ls.q[x.n]; if(!s || !s.fim){ linhas.push(k+") não fez"); return }
       var t=s.tent, ok=t[t.length-1]===x.certo; if(ok && t.length===1) prim++;
-      linhas.push(x.n+") "+t[0]+(ok ? (t.length===1?" ✓ de primeira":" · acertou na "+t.length+"ª ("+t.join(" → ")+")") : " · errou 3 vezes ("+t.join(" → ")+")"));
+      linhas.push(k+") "+t[0]+(ok ? (t.length===1?" ✓ de primeira":" · acertou na "+t.length+"ª ("+t.join(" → ")+")") : " · errou 3 vezes ("+t.join(" → ")+")"));
     });
     linhas.push("Feitas: "+lfeitas()+" de "+L.q.length+" · de primeira: "+prim);
     return linhas.join("\n");
@@ -688,6 +767,7 @@ mark.marca{background:linear-gradient(transparent 6%,#FFE58A 6%,#FFE58A 96%,tran
   function rota(){ var h=location.hash.slice(1);
     if(h==="TREINO") treinoHome(); else if(/^T\d+$/.test(h)) treinoQ(+h.slice(1));
     else if(h==="LEITURA") leituraHome();
+    else if(h==="PROVA") provaHome(); else if(/^P\d+$/.test(h)) provaQ(+h.slice(1));
     else if(h==="CONTA") contaHome(); else if(/^C\d+$/.test(h)) contaQ(+h.slice(1)); else if(/^L\d+$/.test(h)) leituraQ(+h.slice(1));
     else inicio() }
   window.addEventListener("hashchange",rota);

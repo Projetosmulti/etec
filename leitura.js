@@ -4,6 +4,12 @@ window.LEITURA = {
  "titulo": "Leitura: Comédias para se ler na escola",
  "autor": "Luis Fernando Verissimo",
  "cronicas": [
+  "A espada",
+  "O Marajá",
+  "Suflê de chuchu",
+  "Direitos humanos",
+  "A novata",
+  "Da timidez",
   "Papos",
   "História estranha",
   "A bola",
@@ -14,15 +20,387 @@ window.LEITURA = {
   "Segurança",
   "Rápido",
   "Hábito nacional",
-  "O ator",
-  "A espada",
-  "O Marajá",
-  "Suflê de chuchu",
-  "Direitos humanos",
-  "A novata",
-  "Da timidez"
+  "O ator"
  ],
  "q": [
+  {
+   "n": 34,
+   "c": "A espada",
+   "enun": "\"O pai se controla para não rir. Pelo menos a leitura de história em quadrinhos está ajudando a gramática do guri.\" Esse comentário revela que, nesse momento, o pai:",
+   "alt": [
+    "acredita que o filho é mesmo o Thunder Boy.",
+    "não leva o filho a sério e acha que a fala solene dele é só imitação dos quadrinhos.",
+    "desconfia que foi a mãe quem deu a espada.",
+    "está preocupado porque o filho fala errado.",
+    "está bravo e quer castigar o filho por mentir."
+   ],
+   "certo": "B",
+   "por": {
+    "A": "Se acreditasse, teria vontade de rir? E logo depois ele decide \"cortar as histórias em quadrinhos\".",
+    "C": "Nesse trecho ele fala de quadrinhos e de gramática, não de quem deu a espada.",
+    "D": "É o contrário: ele nota que o filho disse \"Eu a receberia\", uma forma bem caprichada.",
+    "E": "Quem está bravo \"se controla para não rir\"?"
+   },
+   "pense": "\"Se controlar para não rir\" mostra o quê? Ele acredita na história do filho ou acha graça dela?",
+   "resumo": "Ele acha graça: pensa que o filho só está imitando os quadrinhos, até na gramática caprichada. Nesse momento ainda não leva nada a sério."
+  },
+  {
+   "n": 35,
+   "c": "A espada",
+   "enun": "\"- Ainda bem - diz o pai. E não diz mais nada.\" A partir daí, o leitor entende que:",
+   "alt": [
+    "o pai ficou com sono e foi dormir.",
+    "o trovão foi só coincidência, como acha a mãe.",
+    "o filho desistiu da brincadeira.",
+    "a história do filho era verdade, e o pai fica sem palavras diante do trovão e da espada iluminada.",
+    "o pai ficou bravo e parou de falar com o filho."
+   ],
+   "certo": "D",
+   "por": {
+    "A": "Releia o que ele \"vê\" e \"ouve\" logo depois: trovão, espada azul.",
+    "B": "A mãe não viu a cena. O pai viu a espada e o filho ficarem azuis. Uma trovoada comum faz isso?",
+    "C": "O filho ergue a espada e grita \"Ramil!\". Isso é desistir?",
+    "E": "Ele se cala por raiva? Veja o que acontece na janela."
+   },
+   "pense": "Por que alguém para de falar de repente? Veja o que o pai vê e ouve logo em seguida.",
+   "resumo": "O pai se cala porque vê o impossível: o trovão, a espada e o próprio filho iluminados de azul. A fantasia do menino era real."
+  },
+  {
+   "n": 36,
+   "c": "A espada",
+   "enun": "No final, a mãe acha que foi só uma trovoada, e o pai diz: \"Senta, primeiro.\" O que isso indica?",
+   "alt": [
+    "o pai vai contar uma notícia difícil (que o filho partiu), mas o conto termina antes dessa conversa.",
+    "o pai vai contar que foi ele quem comprou a espada.",
+    "a mãe já sabia que o filho era o Thunder Boy.",
+    "o pai explica tudo à mãe em detalhes.",
+    "a mãe está com medo da tempestade."
+   ],
+   "certo": "A",
+   "por": {
+    "B": "O pai pergunta \"Quem foi que deu a espada?\" e a mãe responde \"Não foi você?\". Ninguém da família deu.",
+    "C": "Ela acha que foi só \"trovoada\" e pensa que o pai deu a espada. Ela sabe de alguma coisa?",
+    "D": "O conto mostra essa explicação? Veja onde ele termina.",
+    "E": "Ela comenta o tempo com tranquilidade: \"Vá entender este tempo\"."
+   },
+   "pense": "\"Senta, primeiro\" é o que se diz antes de que tipo de notícia? Lembre o que o filho pediu: \"Quero que você explique à mamãe\". O conto mostra essa conversa?",
+   "resumo": "A mãe acha que foi só chuva; o pai e o leitor sabem que não. \"Senta, primeiro\" anuncia a notícia que o filho pediu para o pai dar (ele partiu), e o conto para aí, deixando o resto para o leitor imaginar."
+  },
+  {
+   "n": 37,
+   "c": "O Marajá",
+   "enun": "Na família, frases como \"Está esperando o Marajá?\" são usadas para:",
+   "alt": [
+    "avisar que um visitante de verdade estava para chegar.",
+    "elogiar a casa sempre limpa.",
+    "pedir que ela preparasse um almoço especial.",
+    "explicar que dona Morgadinha era de uma família rica da Índia.",
+    "zombar da mania de limpeza de dona Morgadinha, como se ela arrumasse a casa para uma visita importantíssima que nunca viria."
+   ],
+   "certo": "E",
+   "por": {
+    "A": "No começo, alguém tinha marcado visita? Era uma piada da família.",
+    "B": "Os filhos dizem isso quando ela reclama da bagunça deles. É elogio ou provocação?",
+    "C": "Releia as falas dos filhos: livros na sala, unhas, pés na mesa. Tem pedido de almoço?",
+    "D": "O texto diz isso? O Marajá aparece como uma figura distante, quase impossível."
+   },
+   "pense": "Quem diz essa frase, e em que momento? O que eles estavam fazendo quando ela reclamou?",
+   "resumo": "\"Esperar o Marajá\" é deboche: ela limpa tanto que parece estar esperando a visita de um rei. A família usa a frase para provocá-la."
+  },
+  {
+   "n": 38,
+   "c": "O Marajá",
+   "enun": "Depois das visitas, dona Morgadinha vai para a cama sem rearrumar os armários e nem percebe o vira-lata que o filho traz para fazer xixi na poltrona. Esses detalhes permitem concluir que ela:",
+   "alt": [
+    "descobriu que a visita era uma brincadeira e ficou triste.",
+    "ficou doente e não tinha mais forças para limpar.",
+    "se encantou pelo Marajá, e o sonho passou a importar mais do que a limpeza que antes dominava a vida dela.",
+    "decidiu se vingar da bagunça da família.",
+    "recebeu do Marajá o pedido de parar de limpar a casa."
+   ],
+   "certo": "C",
+   "por": {
+    "A": "Se tivesse descoberto, estaria sonhando acordada? Quem fala em contar a verdade é o Turcão, depois.",
+    "B": "O texto fala em \"olhar perdido\" e \"devaneio\". Isso é doença ou sonho?",
+    "D": "Ela nem nota o cachorro. Quem quer vingança presta atenção em tudo.",
+    "E": "Releia a conversa deles: linho, mármore, purificação dos espíritos. Ele pediu isso?"
+   },
+   "pense": "\"Devaneio\" é sonhar acordado. Com o que ela sonharia depois das visitas de um homem tão elegante? Compare com quem ela era antes.",
+   "resumo": "Quem não suportava uma almofada torta agora ignora até um cachorro na poltrona. Ela está encantada, sonhando com o Marajá."
+  },
+  {
+   "n": 39,
+   "c": "O Marajá",
+   "enun": "\"E percebeu que com as almas simples não se brinca.\" No desfecho, a ironia está em que:",
+   "alt": [
+    "a brincadeira que o marido fez para rir da mulher virou um problema para ele mesmo.",
+    "dona Morgadinha estava fingindo o tempo todo.",
+    "o Marajá era verdadeiro desde o começo.",
+    "o marido fica contente porque a casa ficou mais bagunçada.",
+    "o Turcão conta a verdade e tudo termina bem."
+   ],
+   "certo": "A",
+   "por": {
+    "B": "O Turcão diz: \"Ela levou a sério\". Ela sabia de alguma coisa?",
+    "C": "Releia: o Turcão foi contratado \"para se fingir de Marajá\".",
+    "D": "Ele diz que \"já era demais\" e fica \"compungido\" (arrependido, triste). Isso é estar contente?",
+    "E": "O marido pede o contrário: que o Turcão continue visitando a mulher."
+   },
+   "pense": "Quem armou a brincadeira? E quem acabou numa situação sem saída por causa dela?",
+   "resumo": "O marido quis brincar com a mulher e virou refém da própria piada: não pode contar a verdade e precisa que o falso Marajá continue, torcendo para ela se desiludir sozinha (com um arroto!)."
+  },
+  {
+   "n": 40,
+   "c": "Suflê de chuchu",
+   "enun": "\"(a Duda, que em casa não levantava nem a sua roupa do chão!)\" Esse comentário entre parênteses:",
+   "alt": [
+    "indica que a Duda já tinha trabalhado como faxineira.",
+    "mostra que a Duda era muito organizada.",
+    "é uma fala da própria Duda.",
+    "mostra, com humor, que a Duda era preguiçosa em casa, o que torna engraçado vê-la trabalhando em Paris.",
+    "explica por que os pais deixaram a Duda viajar."
+   ],
+   "certo": "D",
+   "por": {
+    "A": "Ela nem sabia que o aspirador de pó precisava ser ligado na tomada.",
+    "B": "\"Não levantava nem a sua roupa do chão\". Isso é organização?",
+    "C": "Não há travessão. Quem faz esse comentário é o narrador.",
+    "E": "Os pais deixaram? Releia: \"contra a vontade do pai e da mãe\"."
+   },
+   "pense": "Parênteses costumam trazer um comentário do narrador. Compare o que o parêntese diz com o trabalho que ela vai fazer em Paris.",
+   "resumo": "O narrador comenta, com ironia, que a filha que não arrumava nada em casa foi sozinha para o mundo. Em Paris ela vira \"au pair\", a faz-tudo da casa: o contraste é a graça."
+  },
+  {
+   "n": 41,
+   "c": "Suflê de chuchu",
+   "enun": "\"Coração de mãe é um pouco como as Caraíbas. Ventos se cruzam, correntes se chocam...\" Com essa comparação, o narrador mostra que a mãe:",
+   "alt": [
+    "tinha raiva da filha por ter viajado.",
+    "não sabia a receita do suflê.",
+    "estava calma e segura do que fazer.",
+    "sonhava em viajar para o Caribe.",
+    "sentia emoções contraditórias: queria o sucesso da filha, mas tinha medo de que ela nunca mais voltasse."
+   ],
+   "certo": "E",
+   "por": {
+    "A": "O texto fala do \"desejo de que a filha fizesse bonito\". Isso é raiva?",
+    "B": "Ela sabia, tanto que dá a receita \"errada\" de propósito.",
+    "C": "\"Ventos se cruzam, correntes se chocam\". Isso parece calma?",
+    "D": "As Caraíbas são só uma comparação. Ela queria ir para lá?"
+   },
+   "pense": "Leia o trecho logo depois: \"De um lado o desejo... do outro o medo...\". Quantos sentimentos ela tinha ao mesmo tempo?",
+   "resumo": "Como o mar do Caribe, cheio de ventos e correntes que se chocam, o coração da mãe estava dividido: queria o sucesso da filha, mas queria a filha de volta. Por isso dá a receita errada."
+  },
+  {
+   "n": 42,
+   "c": "Suflê de chuchu",
+   "enun": "No final, a Duda pede a letra de \"Cubanacã\" e o pai responde: \"Diz pra essa menina voltar pra casa. JÁ!\". O desfecho mostra que:",
+   "alt": [
+    "o suflê foi um sucesso e a Duda virou cozinheira famosa.",
+    "o pai, assim como a mãe, prefere ter a filha de volta em casa a ajudá-la a fazer sucesso lá fora.",
+    "a Duda já estava voltando para o Brasil.",
+    "o pai finalmente aceita que a filha more em Paris.",
+    "a Duda foi presa por causa do suflê."
+   ],
+   "certo": "B",
+   "por": {
+    "A": "O texto não conta o resultado do suflê. Agora ela pede uma música para o \"meu número\", um show.",
+    "C": "Ela diz \"eu preciso pro meu número\". Quem quer que ela volte?",
+    "D": "Releia a fala dele: \"voltar pra casa. JÁ!\". Isso é aceitar?",
+    "E": "Isso era só o que a mãe imaginava. A Duda liga, com bongos e maracas no fundo."
+   },
+   "pense": "O texto diz que \"também houve um certo conflito no coração do pai\". Qual foi o primeiro impulso e qual venceu? Isso lembra o que a mãe fez com a receita?",
+   "resumo": "O pai teve dois impulsos: o orgulho por a filha precisar dele e o medo de perdê-la. Venceu o medo, como com a mãe e a receita errada: os dois preferem a filha em casa."
+  },
+  {
+   "n": 43,
+   "c": "Direitos humanos",
+   "enun": "Os turistas gritam \"Oh!\" para a praia, para a Pedra da Gávea e também quando o ônibus freia de repente. Esse recurso:",
+   "alt": [
+    "mostra que os turistas conheciam bem o Rio.",
+    "serve para descrever as paisagens em detalhes.",
+    "cria humor ao mostrar que os turistas reagem do mesmo jeito a tudo, sem entender de fato o que estão vendo.",
+    "mostra que a guia falava mal o inglês.",
+    "indica que os turistas tinham medo do motorista."
+   ],
+   "certo": "C",
+   "por": {
+    "A": "Eles dizem \"What?\" e precisam da guia para tudo.",
+    "B": "\"Oh!\" descreve alguma coisa? É só uma reação.",
+    "D": "O \"Oh!\" é dos turistas, não da guia.",
+    "E": "O \"Oh!\" aparece até para a praia bonita. Medo da praia?"
+   },
+   "pense": "Compare o \"Oh!\" para a praia com o \"Oh!\" da freada. É a mesma reação para coisas bem diferentes?",
+   "resumo": "O mesmo \"Oh!\" para a vista bonita, para a freada e para o \"Animal game\": os turistas reagem a tudo igual, como plateia de um espetáculo que não entendem."
+  },
+  {
+   "n": 44,
+   "c": "Direitos humanos",
+   "enun": "Durante a excursão, \"as simpatias dos turistas estavam com o Budum Filho\", e no fim ele ainda ganha gorjetas, enquanto o Algemiro não ganha nada. A crônica sugere que isso acontece porque:",
+   "alt": [
+    "o Budum Filho estava certo na briga.",
+    "a guia pediu que os turistas defendessem o Budum Filho.",
+    "os turistas entendiam português e ouviram toda a história.",
+    "o Budum Filho era um sambista famoso.",
+    "os turistas não entendem a briga e acham que o Budum é a vítima; ele aproveita e ainda se mostra como artista."
+   ],
+   "certo": "E",
+   "por": {
+    "A": "O Algemiro ganhou no bicho e o Budum não pagou. Quem deve a quem?",
+    "B": "A guia só quer terminar a excursão. Ela não toma partido.",
+    "C": "Eles precisam da guia como intérprete o tempo todo.",
+    "D": "O samba que ele canta é do Martinho da Vila, não dele. O Algemiro tenta desmascará-lo."
+   },
+   "pense": "O que os turistas sabem da briga? E o que o Budum faz para conquistar a simpatia deles (o que conta, o que canta)?",
+   "resumo": "Sem entender a língua nem a história, os turistas ficam do lado de quem parece a vítima. O caloteiro até canta um samba que não é dele e sai com gorjeta."
+  },
+  {
+   "n": 45,
+   "c": "Direitos humanos",
+   "enun": "O título \"Direitos humanos\" ganha um sentido irônico no final porque:",
+   "alt": [
+    "o conto defende, de forma séria, a importância dos direitos humanos.",
+    "quem fala em direitos humanos é o próprio caloteiro, que usa isso para não pagar o que deve.",
+    "o presidente americano vem ao Brasil defender o Budum Filho.",
+    "os turistas organizam um protesto pelos direitos humanos.",
+    "o Algemiro respeita os direitos do Budum e perdoa a dívida."
+   ],
+   "certo": "B",
+   "por": {
+    "A": "Quem fala em direitos humanos, e para quê? Para não pagar o que deve.",
+    "C": "Isso é só a ameaça do Budum: \"passei um bilhete para o Clinton\".",
+    "D": "Os turistas já foram embora. O final acontece só entre os dois, no ônibus.",
+    "E": "Releia o último \"Não, Algemiro. Não!\". Parece perdão?"
+   },
+   "pense": "Quem diz \"Respeita os meus direitos humanos\"? Ele é vítima ou devedor? E o que o Algemiro responde?",
+   "resumo": "Um tema sério vira piada: o caloteiro usa os \"direitos humanos\" e o presidente americano como escudo. O Algemiro rebate lembrando que o presidente agora é outro, e o final fica no ar."
+  },
+  {
+   "n": 46,
+   "c": "A novata",
+   "enun": "O editor fala em \"linha de frente do jornalismo moderno\", em \"coragem\" e em \"estômago\". Ao longo do conto, o leitor descobre que o trabalho delas é:",
+   "alt": [
+    "entrevistar uma celebridade com perguntas bobas sobre a vida pessoal dela (perfume, cueca, cor favorita).",
+    "fazer uma reportagem sobre política.",
+    "cobrir uma guerra em outro país.",
+    "investigar um crime perigoso para a crônica policial.",
+    "escrever críticas de livros para o suplemento cultural."
+   ],
+   "certo": "A",
+   "por": {
+    "B": "Alguém pergunta sobre governo ou eleição? Releia as perguntas.",
+    "C": "\"Linha de frente\" é só um jeito de falar. Para onde elas vão? Para o apartamento do Rudi.",
+    "D": "A crônica policial é para onde vai quem desiste. Que perguntas elas fazem ao Rudi?",
+    "E": "A Dalva até debocha: \"Você acha que está respondendo para o suplemento cultural?\""
+   },
+   "pense": "Que perguntas a Dalva faz ao Rudi? São sobre um assunto sério ou sobre a vida pessoal dele?",
+   "resumo": "Parecia uma missão perigosa, mas era uma entrevista sobre coisas bobas: perfume, cueca, pasta de dente. O humor vem desse contraste."
+  },
+  {
+   "n": 47,
+   "c": "A novata",
+   "enun": "No apartamento do Rudi, a Dalva empurra a porta, manda ele ficar \"Quieto!\" e diz: \"tudo que você disser pode ser usado na edição de domingo\". A cena imita:",
+   "alt": [
+    "uma festa de aniversário.",
+    "uma aula na escola.",
+    "uma consulta médica.",
+    "um interrogatório policial, como nos filmes.",
+    "uma visita de amigos."
+   ],
+   "certo": "D",
+   "por": {
+    "A": "O Rudi fica assustado e até chora. Isso é festa?",
+    "B": "Tem professor e alunos? Repare em \"Quieto!\" e \"Prepare-se para falar\".",
+    "C": "Ela pergunta sobre saúde? De onde vem a frase \"tudo que você disser pode ser usado...\"?",
+    "E": "Amigo empurra a porta e manda ficar quieto?"
+   },
+   "pense": "Em que tipo de filme se ouve \"tudo o que você disser pode ser usado contra você\"?",
+   "resumo": "Porta empurrada, \"Quieto!\" e uma frase de filme policial: a entrevista é contada como se fosse um interrogatório. Por isso é engraçado."
+  },
+  {
+   "n": 48,
+   "c": "A novata",
+   "enun": "No final, a novata continua sozinha: \"Não pense que acabou ainda, Rudi. Sabonete!\". Isso mostra que a Sandrinha:",
+   "alt": [
+    "desistiu do emprego.",
+    "estava com medo da Dalva.",
+    "aprendeu rápido o jeito duro da Dalva e entrou de vez no jogo.",
+    "ficou com pena do Rudi e quis parar.",
+    "queria vender um sabonete para o Rudi."
+   ],
+   "certo": "C",
+   "por": {
+    "A": "A Dalva diz \"Você é boa, novata\". Ela desistiu?",
+    "B": "Ela faz perguntas sozinha, sem a Dalva pedir. Isso é medo?",
+    "D": "Quem quer parar diz \"Não pense que acabou ainda\"?",
+    "E": "\"Sabonete!\" é mais uma pergunta: qual sabonete ele usa."
+   },
+   "pense": "No começo ela era a novata insegura. No fim, quem está fazendo as perguntas?",
+   "resumo": "A novata, que chegou insegura, termina mais insistente que a veterana. Ela passou no teste do editor."
+  },
+  {
+   "n": 49,
+   "c": "Da timidez",
+   "enun": "\"Ser um tímido notório é uma contradição.\" Segundo o texto, por quê?",
+   "alt": [
+    "porque \"notório\" quer dizer \"escondido\".",
+    "porque todo tímido é mentiroso.",
+    "porque os tímidos nunca ficam famosos.",
+    "porque o tímido tem horror a ser notado, e \"notório\" é justamente quem é notado por todos.",
+    "porque o tímido adora chamar atenção."
+   ],
+   "certo": "D",
+   "por": {
+    "A": "É o contrário. \"Notório\" vem de notar: quem todo mundo nota.",
+    "B": "O texto levanta a hipótese de um \"estratagema\", mas não chama todos de mentirosos.",
+    "C": "O texto não diz \"nunca\". A contradição está no sentido das palavras.",
+    "E": "Essa ideia aparece depois, como brincadeira. A primeira frase fala do horror de ser notado."
+   },
+   "pense": "O que quer dizer \"notório\"? E do que o tímido tem horror? Leia a frase seguinte.",
+   "resumo": "Notório é quem todo mundo nota. O tímido odeia ser notado. Juntar as duas coisas é uma contradição."
+  },
+  {
+   "n": 50,
+   "c": "Da timidez",
+   "enun": "\"Defendo a tese de que ninguém é mais tímido do que o extrovertido.\" O que o autor quer dizer?",
+   "alt": [
+    "que o extrovertido chama atenção de propósito para esconder que, no fundo, é tímido.",
+    "que tímidos e extrovertidos nunca conseguem conversar.",
+    "que essa ideia é de outro escritor, que o autor critica.",
+    "que o autor se enganou e se contradisse sem perceber.",
+    "que existe uma pesquisa científica que prova isso."
+   ],
+   "certo": "A",
+   "por": {
+    "B": "O texto fala de conversa entre eles? Leia a frase seguinte: \"O extrovertido faz questão de chamar atenção...\"",
+    "C": "\"Defendo\" está na primeira pessoa. A ideia é do próprio autor.",
+    "D": "Ele faz de propósito e explica: o extrovertido chama atenção \"assim ninguém descobre sua timidez\".",
+    "E": "Ele cita alguma pesquisa? Ele diz \"Defendo a tese\": é opinião dele."
+   },
+   "pense": "Tímido e extrovertido são opostos. Dizer que o extrovertido é o mais tímido parece certo ou absurdo? E o autor explica por quê?",
+   "resumo": "Juntar opostos numa ideia que parece absurda, mas faz sentido quando explicada, é um paradoxo. Para o autor, o extrovertido seria um tímido disfarçado."
+  },
+  {
+   "n": 51,
+   "c": "Da timidez",
+   "enun": "\"O tímido, em suma, é uma pessoa convencida de que é o centro do Universo...\" Com essa conclusão, o autor sugere que:",
+   "alt": [
+    "o tímido é humilde e não se acha importante.",
+    "o tímido deve procurar um analista imediatamente.",
+    "a timidez só atrapalha quem precisa falar em público.",
+    "o tímido tem razão, porque todos estão mesmo olhando para ele.",
+    "o tímido acha que todo mundo está sempre prestando atenção nele."
+   ],
+   "certo": "E",
+   "por": {
+    "A": "É o contrário: ele acha que \"todas as atenções se voltam para ele\".",
+    "B": "O analista aparece só como exemplo de paradoxo, não como conselho.",
+    "C": "\"Para o tímido, duas pessoas são uma multidão.\" O problema vai além do palco.",
+    "D": "O autor diz que o tímido \"nunca tem a menor dúvida\" disso. É certeza dele, não um fato."
+   },
+   "pense": "Releia: \"Se cochicham, é sobre ele. Se riem, é dele.\" Quem acha que tudo gira em torno de si mesmo é...?",
+   "resumo": "O tímido acha que o mundo inteiro, e até o destino, só pensa nele. O autor conclui, com humor, que isso é se achar o centro do Universo."
+  },
   {
    "n": 1,
    "c": "Papos",
@@ -715,384 +1093,6 @@ window.LEITURA = {
    },
    "pense": "Quanto mais ele grita que não é ator, o que o diretor responde? Por quê?",
    "resumo": "Ele grita que não é ator, mas até a revolta dele parece parte da cena. Quanto mais nega, mais parece confirmar que está num filme."
-  },
-  {
-   "n": 34,
-   "c": "A espada",
-   "enun": "\"O pai se controla para não rir. Pelo menos a leitura de história em quadrinhos está ajudando a gramática do guri.\" Esse comentário revela que, nesse momento, o pai:",
-   "alt": [
-    "acredita que o filho é mesmo o Thunder Boy.",
-    "não leva o filho a sério e acha que a fala solene dele é só imitação dos quadrinhos.",
-    "desconfia que foi a mãe quem deu a espada.",
-    "está preocupado porque o filho fala errado.",
-    "está bravo e quer castigar o filho por mentir."
-   ],
-   "certo": "B",
-   "por": {
-    "A": "Se acreditasse, teria vontade de rir? E logo depois ele decide \"cortar as histórias em quadrinhos\".",
-    "C": "Nesse trecho ele fala de quadrinhos e de gramática, não de quem deu a espada.",
-    "D": "É o contrário: ele nota que o filho disse \"Eu a receberia\", uma forma bem caprichada.",
-    "E": "Quem está bravo \"se controla para não rir\"?"
-   },
-   "pense": "\"Se controlar para não rir\" mostra o quê? Ele acredita na história do filho ou acha graça dela?",
-   "resumo": "Ele acha graça: pensa que o filho só está imitando os quadrinhos, até na gramática caprichada. Nesse momento ainda não leva nada a sério."
-  },
-  {
-   "n": 35,
-   "c": "A espada",
-   "enun": "\"- Ainda bem - diz o pai. E não diz mais nada.\" A partir daí, o leitor entende que:",
-   "alt": [
-    "o pai ficou com sono e foi dormir.",
-    "o trovão foi só coincidência, como acha a mãe.",
-    "o filho desistiu da brincadeira.",
-    "a história do filho era verdade, e o pai fica sem palavras diante do trovão e da espada iluminada.",
-    "o pai ficou bravo e parou de falar com o filho."
-   ],
-   "certo": "D",
-   "por": {
-    "A": "Releia o que ele \"vê\" e \"ouve\" logo depois: trovão, espada azul.",
-    "B": "A mãe não viu a cena. O pai viu a espada e o filho ficarem azuis. Uma trovoada comum faz isso?",
-    "C": "O filho ergue a espada e grita \"Ramil!\". Isso é desistir?",
-    "E": "Ele se cala por raiva? Veja o que acontece na janela."
-   },
-   "pense": "Por que alguém para de falar de repente? Veja o que o pai vê e ouve logo em seguida.",
-   "resumo": "O pai se cala porque vê o impossível: o trovão, a espada e o próprio filho iluminados de azul. A fantasia do menino era real."
-  },
-  {
-   "n": 36,
-   "c": "A espada",
-   "enun": "No final, a mãe acha que foi só uma trovoada, e o pai diz: \"Senta, primeiro.\" O que isso indica?",
-   "alt": [
-    "o pai vai contar uma notícia difícil (que o filho partiu), mas o conto termina antes dessa conversa.",
-    "o pai vai contar que foi ele quem comprou a espada.",
-    "a mãe já sabia que o filho era o Thunder Boy.",
-    "o pai explica tudo à mãe em detalhes.",
-    "a mãe está com medo da tempestade."
-   ],
-   "certo": "A",
-   "por": {
-    "B": "O pai pergunta \"Quem foi que deu a espada?\" e a mãe responde \"Não foi você?\". Ninguém da família deu.",
-    "C": "Ela acha que foi só \"trovoada\" e pensa que o pai deu a espada. Ela sabe de alguma coisa?",
-    "D": "O conto mostra essa explicação? Veja onde ele termina.",
-    "E": "Ela comenta o tempo com tranquilidade: \"Vá entender este tempo\"."
-   },
-   "pense": "\"Senta, primeiro\" é o que se diz antes de que tipo de notícia? Lembre o que o filho pediu: \"Quero que você explique à mamãe\". O conto mostra essa conversa?",
-   "resumo": "A mãe acha que foi só chuva; o pai e o leitor sabem que não. \"Senta, primeiro\" anuncia a notícia que o filho pediu para o pai dar (ele partiu), e o conto para aí, deixando o resto para o leitor imaginar."
-  },
-  {
-   "n": 37,
-   "c": "O Marajá",
-   "enun": "Na família, frases como \"Está esperando o Marajá?\" são usadas para:",
-   "alt": [
-    "avisar que um visitante de verdade estava para chegar.",
-    "elogiar a casa sempre limpa.",
-    "pedir que ela preparasse um almoço especial.",
-    "explicar que dona Morgadinha era de uma família rica da Índia.",
-    "zombar da mania de limpeza de dona Morgadinha, como se ela arrumasse a casa para uma visita importantíssima que nunca viria."
-   ],
-   "certo": "E",
-   "por": {
-    "A": "No começo, alguém tinha marcado visita? Era uma piada da família.",
-    "B": "Os filhos dizem isso quando ela reclama da bagunça deles. É elogio ou provocação?",
-    "C": "Releia as falas dos filhos: livros na sala, unhas, pés na mesa. Tem pedido de almoço?",
-    "D": "O texto diz isso? O Marajá aparece como uma figura distante, quase impossível."
-   },
-   "pense": "Quem diz essa frase, e em que momento? O que eles estavam fazendo quando ela reclamou?",
-   "resumo": "\"Esperar o Marajá\" é deboche: ela limpa tanto que parece estar esperando a visita de um rei. A família usa a frase para provocá-la."
-  },
-  {
-   "n": 38,
-   "c": "O Marajá",
-   "enun": "Depois das visitas, dona Morgadinha vai para a cama sem rearrumar os armários e nem percebe o vira-lata que o filho traz para fazer xixi na poltrona. Esses detalhes permitem concluir que ela:",
-   "alt": [
-    "descobriu que a visita era uma brincadeira e ficou triste.",
-    "ficou doente e não tinha mais forças para limpar.",
-    "se encantou pelo Marajá, e o sonho passou a importar mais do que a limpeza que antes dominava a vida dela.",
-    "decidiu se vingar da bagunça da família.",
-    "recebeu do Marajá o pedido de parar de limpar a casa."
-   ],
-   "certo": "C",
-   "por": {
-    "A": "Se tivesse descoberto, estaria sonhando acordada? Quem fala em contar a verdade é o Turcão, depois.",
-    "B": "O texto fala em \"olhar perdido\" e \"devaneio\". Isso é doença ou sonho?",
-    "D": "Ela nem nota o cachorro. Quem quer vingança presta atenção em tudo.",
-    "E": "Releia a conversa deles: linho, mármore, purificação dos espíritos. Ele pediu isso?"
-   },
-   "pense": "\"Devaneio\" é sonhar acordado. Com o que ela sonharia depois das visitas de um homem tão elegante? Compare com quem ela era antes.",
-   "resumo": "Quem não suportava uma almofada torta agora ignora até um cachorro na poltrona. Ela está encantada, sonhando com o Marajá."
-  },
-  {
-   "n": 39,
-   "c": "O Marajá",
-   "enun": "\"E percebeu que com as almas simples não se brinca.\" No desfecho, a ironia está em que:",
-   "alt": [
-    "a brincadeira que o marido fez para rir da mulher virou um problema para ele mesmo.",
-    "dona Morgadinha estava fingindo o tempo todo.",
-    "o Marajá era verdadeiro desde o começo.",
-    "o marido fica contente porque a casa ficou mais bagunçada.",
-    "o Turcão conta a verdade e tudo termina bem."
-   ],
-   "certo": "A",
-   "por": {
-    "B": "O Turcão diz: \"Ela levou a sério\". Ela sabia de alguma coisa?",
-    "C": "Releia: o Turcão foi contratado \"para se fingir de Marajá\".",
-    "D": "Ele diz que \"já era demais\" e fica \"compungido\" (arrependido, triste). Isso é estar contente?",
-    "E": "O marido pede o contrário: que o Turcão continue visitando a mulher."
-   },
-   "pense": "Quem armou a brincadeira? E quem acabou numa situação sem saída por causa dela?",
-   "resumo": "O marido quis brincar com a mulher e virou refém da própria piada: não pode contar a verdade e precisa que o falso Marajá continue, torcendo para ela se desiludir sozinha (com um arroto!)."
-  },
-  {
-   "n": 40,
-   "c": "Suflê de chuchu",
-   "enun": "\"(a Duda, que em casa não levantava nem a sua roupa do chão!)\" Esse comentário entre parênteses:",
-   "alt": [
-    "indica que a Duda já tinha trabalhado como faxineira.",
-    "mostra que a Duda era muito organizada.",
-    "é uma fala da própria Duda.",
-    "mostra, com humor, que a Duda era preguiçosa em casa, o que torna engraçado vê-la trabalhando em Paris.",
-    "explica por que os pais deixaram a Duda viajar."
-   ],
-   "certo": "D",
-   "por": {
-    "A": "Ela nem sabia que o aspirador de pó precisava ser ligado na tomada.",
-    "B": "\"Não levantava nem a sua roupa do chão\". Isso é organização?",
-    "C": "Não há travessão. Quem faz esse comentário é o narrador.",
-    "E": "Os pais deixaram? Releia: \"contra a vontade do pai e da mãe\"."
-   },
-   "pense": "Parênteses costumam trazer um comentário do narrador. Compare o que o parêntese diz com o trabalho que ela vai fazer em Paris.",
-   "resumo": "O narrador comenta, com ironia, que a filha que não arrumava nada em casa foi sozinha para o mundo. Em Paris ela vira \"au pair\", a faz-tudo da casa: o contraste é a graça."
-  },
-  {
-   "n": 41,
-   "c": "Suflê de chuchu",
-   "enun": "\"Coração de mãe é um pouco como as Caraíbas. Ventos se cruzam, correntes se chocam...\" Com essa comparação, o narrador mostra que a mãe:",
-   "alt": [
-    "tinha raiva da filha por ter viajado.",
-    "não sabia a receita do suflê.",
-    "estava calma e segura do que fazer.",
-    "sonhava em viajar para o Caribe.",
-    "sentia emoções contraditórias: queria o sucesso da filha, mas tinha medo de que ela nunca mais voltasse."
-   ],
-   "certo": "E",
-   "por": {
-    "A": "O texto fala do \"desejo de que a filha fizesse bonito\". Isso é raiva?",
-    "B": "Ela sabia, tanto que dá a receita \"errada\" de propósito.",
-    "C": "\"Ventos se cruzam, correntes se chocam\". Isso parece calma?",
-    "D": "As Caraíbas são só uma comparação. Ela queria ir para lá?"
-   },
-   "pense": "Leia o trecho logo depois: \"De um lado o desejo... do outro o medo...\". Quantos sentimentos ela tinha ao mesmo tempo?",
-   "resumo": "Como o mar do Caribe, cheio de ventos e correntes que se chocam, o coração da mãe estava dividido: queria o sucesso da filha, mas queria a filha de volta. Por isso dá a receita errada."
-  },
-  {
-   "n": 42,
-   "c": "Suflê de chuchu",
-   "enun": "No final, a Duda pede a letra de \"Cubanacã\" e o pai responde: \"Diz pra essa menina voltar pra casa. JÁ!\". O desfecho mostra que:",
-   "alt": [
-    "o suflê foi um sucesso e a Duda virou cozinheira famosa.",
-    "o pai, assim como a mãe, prefere ter a filha de volta em casa a ajudá-la a fazer sucesso lá fora.",
-    "a Duda já estava voltando para o Brasil.",
-    "o pai finalmente aceita que a filha more em Paris.",
-    "a Duda foi presa por causa do suflê."
-   ],
-   "certo": "B",
-   "por": {
-    "A": "O texto não conta o resultado do suflê. Agora ela pede uma música para o \"meu número\", um show.",
-    "C": "Ela diz \"eu preciso pro meu número\". Quem quer que ela volte?",
-    "D": "Releia a fala dele: \"voltar pra casa. JÁ!\". Isso é aceitar?",
-    "E": "Isso era só o que a mãe imaginava. A Duda liga, com bongos e maracas no fundo."
-   },
-   "pense": "O texto diz que \"também houve um certo conflito no coração do pai\". Qual foi o primeiro impulso e qual venceu? Isso lembra o que a mãe fez com a receita?",
-   "resumo": "O pai teve dois impulsos: o orgulho por a filha precisar dele e o medo de perdê-la. Venceu o medo, como com a mãe e a receita errada: os dois preferem a filha em casa."
-  },
-  {
-   "n": 43,
-   "c": "Direitos humanos",
-   "enun": "Os turistas gritam \"Oh!\" para a praia, para a Pedra da Gávea e também quando o ônibus freia de repente. Esse recurso:",
-   "alt": [
-    "mostra que os turistas conheciam bem o Rio.",
-    "serve para descrever as paisagens em detalhes.",
-    "cria humor ao mostrar que os turistas reagem do mesmo jeito a tudo, sem entender de fato o que estão vendo.",
-    "mostra que a guia falava mal o inglês.",
-    "indica que os turistas tinham medo do motorista."
-   ],
-   "certo": "C",
-   "por": {
-    "A": "Eles dizem \"What?\" e precisam da guia para tudo.",
-    "B": "\"Oh!\" descreve alguma coisa? É só uma reação.",
-    "D": "O \"Oh!\" é dos turistas, não da guia.",
-    "E": "O \"Oh!\" aparece até para a praia bonita. Medo da praia?"
-   },
-   "pense": "Compare o \"Oh!\" para a praia com o \"Oh!\" da freada. É a mesma reação para coisas bem diferentes?",
-   "resumo": "O mesmo \"Oh!\" para a vista bonita, para a freada e para o \"Animal game\": os turistas reagem a tudo igual, como plateia de um espetáculo que não entendem."
-  },
-  {
-   "n": 44,
-   "c": "Direitos humanos",
-   "enun": "Durante a excursão, \"as simpatias dos turistas estavam com o Budum Filho\", e no fim ele ainda ganha gorjetas, enquanto o Algemiro não ganha nada. A crônica sugere que isso acontece porque:",
-   "alt": [
-    "o Budum Filho estava certo na briga.",
-    "a guia pediu que os turistas defendessem o Budum Filho.",
-    "os turistas entendiam português e ouviram toda a história.",
-    "o Budum Filho era um sambista famoso.",
-    "os turistas não entendem a briga e acham que o Budum é a vítima; ele aproveita e ainda se mostra como artista."
-   ],
-   "certo": "E",
-   "por": {
-    "A": "O Algemiro ganhou no bicho e o Budum não pagou. Quem deve a quem?",
-    "B": "A guia só quer terminar a excursão. Ela não toma partido.",
-    "C": "Eles precisam da guia como intérprete o tempo todo.",
-    "D": "O samba que ele canta é do Martinho da Vila, não dele. O Algemiro tenta desmascará-lo."
-   },
-   "pense": "O que os turistas sabem da briga? E o que o Budum faz para conquistar a simpatia deles (o que conta, o que canta)?",
-   "resumo": "Sem entender a língua nem a história, os turistas ficam do lado de quem parece a vítima. O caloteiro até canta um samba que não é dele e sai com gorjeta."
-  },
-  {
-   "n": 45,
-   "c": "Direitos humanos",
-   "enun": "O título \"Direitos humanos\" ganha um sentido irônico no final porque:",
-   "alt": [
-    "o conto defende, de forma séria, a importância dos direitos humanos.",
-    "quem fala em direitos humanos é o próprio caloteiro, que usa isso para não pagar o que deve.",
-    "o presidente americano vem ao Brasil defender o Budum Filho.",
-    "os turistas organizam um protesto pelos direitos humanos.",
-    "o Algemiro respeita os direitos do Budum e perdoa a dívida."
-   ],
-   "certo": "B",
-   "por": {
-    "A": "Quem fala em direitos humanos, e para quê? Para não pagar o que deve.",
-    "C": "Isso é só a ameaça do Budum: \"passei um bilhete para o Clinton\".",
-    "D": "Os turistas já foram embora. O final acontece só entre os dois, no ônibus.",
-    "E": "Releia o último \"Não, Algemiro. Não!\". Parece perdão?"
-   },
-   "pense": "Quem diz \"Respeita os meus direitos humanos\"? Ele é vítima ou devedor? E o que o Algemiro responde?",
-   "resumo": "Um tema sério vira piada: o caloteiro usa os \"direitos humanos\" e o presidente americano como escudo. O Algemiro rebate lembrando que o presidente agora é outro, e o final fica no ar."
-  },
-  {
-   "n": 46,
-   "c": "A novata",
-   "enun": "O editor fala em \"linha de frente do jornalismo moderno\", em \"coragem\" e em \"estômago\". Ao longo do conto, o leitor descobre que o trabalho delas é:",
-   "alt": [
-    "entrevistar uma celebridade com perguntas bobas sobre a vida pessoal dela (perfume, cueca, cor favorita).",
-    "fazer uma reportagem sobre política.",
-    "cobrir uma guerra em outro país.",
-    "investigar um crime perigoso para a crônica policial.",
-    "escrever críticas de livros para o suplemento cultural."
-   ],
-   "certo": "A",
-   "por": {
-    "B": "Alguém pergunta sobre governo ou eleição? Releia as perguntas.",
-    "C": "\"Linha de frente\" é só um jeito de falar. Para onde elas vão? Para o apartamento do Rudi.",
-    "D": "A crônica policial é para onde vai quem desiste. Que perguntas elas fazem ao Rudi?",
-    "E": "A Dalva até debocha: \"Você acha que está respondendo para o suplemento cultural?\""
-   },
-   "pense": "Que perguntas a Dalva faz ao Rudi? São sobre um assunto sério ou sobre a vida pessoal dele?",
-   "resumo": "Parecia uma missão perigosa, mas era uma entrevista sobre coisas bobas: perfume, cueca, pasta de dente. O humor vem desse contraste."
-  },
-  {
-   "n": 47,
-   "c": "A novata",
-   "enun": "No apartamento do Rudi, a Dalva empurra a porta, manda ele ficar \"Quieto!\" e diz: \"tudo que você disser pode ser usado na edição de domingo\". A cena imita:",
-   "alt": [
-    "uma festa de aniversário.",
-    "uma aula na escola.",
-    "uma consulta médica.",
-    "um interrogatório policial, como nos filmes.",
-    "uma visita de amigos."
-   ],
-   "certo": "D",
-   "por": {
-    "A": "O Rudi fica assustado e até chora. Isso é festa?",
-    "B": "Tem professor e alunos? Repare em \"Quieto!\" e \"Prepare-se para falar\".",
-    "C": "Ela pergunta sobre saúde? De onde vem a frase \"tudo que você disser pode ser usado...\"?",
-    "E": "Amigo empurra a porta e manda ficar quieto?"
-   },
-   "pense": "Em que tipo de filme se ouve \"tudo o que você disser pode ser usado contra você\"?",
-   "resumo": "Porta empurrada, \"Quieto!\" e uma frase de filme policial: a entrevista é contada como se fosse um interrogatório. Por isso é engraçado."
-  },
-  {
-   "n": 48,
-   "c": "A novata",
-   "enun": "No final, a novata continua sozinha: \"Não pense que acabou ainda, Rudi. Sabonete!\". Isso mostra que a Sandrinha:",
-   "alt": [
-    "desistiu do emprego.",
-    "estava com medo da Dalva.",
-    "aprendeu rápido o jeito duro da Dalva e entrou de vez no jogo.",
-    "ficou com pena do Rudi e quis parar.",
-    "queria vender um sabonete para o Rudi."
-   ],
-   "certo": "C",
-   "por": {
-    "A": "A Dalva diz \"Você é boa, novata\". Ela desistiu?",
-    "B": "Ela faz perguntas sozinha, sem a Dalva pedir. Isso é medo?",
-    "D": "Quem quer parar diz \"Não pense que acabou ainda\"?",
-    "E": "\"Sabonete!\" é mais uma pergunta: qual sabonete ele usa."
-   },
-   "pense": "No começo ela era a novata insegura. No fim, quem está fazendo as perguntas?",
-   "resumo": "A novata, que chegou insegura, termina mais insistente que a veterana. Ela passou no teste do editor."
-  },
-  {
-   "n": 49,
-   "c": "Da timidez",
-   "enun": "\"Ser um tímido notório é uma contradição.\" Segundo o texto, por quê?",
-   "alt": [
-    "porque \"notório\" quer dizer \"escondido\".",
-    "porque todo tímido é mentiroso.",
-    "porque os tímidos nunca ficam famosos.",
-    "porque o tímido tem horror a ser notado, e \"notório\" é justamente quem é notado por todos.",
-    "porque o tímido adora chamar atenção."
-   ],
-   "certo": "D",
-   "por": {
-    "A": "É o contrário. \"Notório\" vem de notar: quem todo mundo nota.",
-    "B": "O texto levanta a hipótese de um \"estratagema\", mas não chama todos de mentirosos.",
-    "C": "O texto não diz \"nunca\". A contradição está no sentido das palavras.",
-    "E": "Essa ideia aparece depois, como brincadeira. A primeira frase fala do horror de ser notado."
-   },
-   "pense": "O que quer dizer \"notório\"? E do que o tímido tem horror? Leia a frase seguinte.",
-   "resumo": "Notório é quem todo mundo nota. O tímido odeia ser notado. Juntar as duas coisas é uma contradição."
-  },
-  {
-   "n": 50,
-   "c": "Da timidez",
-   "enun": "\"Defendo a tese de que ninguém é mais tímido do que o extrovertido.\" O que o autor quer dizer?",
-   "alt": [
-    "que o extrovertido chama atenção de propósito para esconder que, no fundo, é tímido.",
-    "que tímidos e extrovertidos nunca conseguem conversar.",
-    "que essa ideia é de outro escritor, que o autor critica.",
-    "que o autor se enganou e se contradisse sem perceber.",
-    "que existe uma pesquisa científica que prova isso."
-   ],
-   "certo": "A",
-   "por": {
-    "B": "O texto fala de conversa entre eles? Leia a frase seguinte: \"O extrovertido faz questão de chamar atenção...\"",
-    "C": "\"Defendo\" está na primeira pessoa. A ideia é do próprio autor.",
-    "D": "Ele faz de propósito e explica: o extrovertido chama atenção \"assim ninguém descobre sua timidez\".",
-    "E": "Ele cita alguma pesquisa? Ele diz \"Defendo a tese\": é opinião dele."
-   },
-   "pense": "Tímido e extrovertido são opostos. Dizer que o extrovertido é o mais tímido parece certo ou absurdo? E o autor explica por quê?",
-   "resumo": "Juntar opostos numa ideia que parece absurda, mas faz sentido quando explicada, é um paradoxo. Para o autor, o extrovertido seria um tímido disfarçado."
-  },
-  {
-   "n": 51,
-   "c": "Da timidez",
-   "enun": "\"O tímido, em suma, é uma pessoa convencida de que é o centro do Universo...\" Com essa conclusão, o autor sugere que:",
-   "alt": [
-    "o tímido é humilde e não se acha importante.",
-    "o tímido deve procurar um analista imediatamente.",
-    "a timidez só atrapalha quem precisa falar em público.",
-    "o tímido tem razão, porque todos estão mesmo olhando para ele.",
-    "o tímido acha que todo mundo está sempre prestando atenção nele."
-   ],
-   "certo": "E",
-   "por": {
-    "A": "É o contrário: ele acha que \"todas as atenções se voltam para ele\".",
-    "B": "O analista aparece só como exemplo de paradoxo, não como conselho.",
-    "C": "\"Para o tímido, duas pessoas são uma multidão.\" O problema vai além do palco.",
-    "D": "O autor diz que o tímido \"nunca tem a menor dúvida\" disso. É certeza dele, não um fato."
-   },
-   "pense": "Releia: \"Se cochicham, é sobre ele. Se riem, é dele.\" Quem acha que tudo gira em torno de si mesmo é...?",
-   "resumo": "O tímido acha que o mundo inteiro, e até o destino, só pensa nele. O autor conclui, com humor, que isso é se achar o centro do Universo."
   }
  ]
 };

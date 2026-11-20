@@ -1,5 +1,5 @@
-const CACHE = "questao-do-dia-s1-v20";
-const ARQUIVOS = ["./", "index.html", "treino.js", "leitura.js", "conta.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
+const CACHE = "questao-do-dia-s1-v21";
+const ARQUIVOS = ["./", "index.html", "treino.js", "leitura.js", "conta.js", "prova.js", "img/q04-cartum.jpg", "img/q09-tabela.jpg", "img/q21-tirinha.jpg", "img/q33-mapa.jpg", "img/q38-guarana.jpg", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ARQUIVOS)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 // Rede primeiro (pega questões novas), cache quando estiver offline.
